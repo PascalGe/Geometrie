@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	Blatt 3\\
+	P.Gepperth, S.Jung\\
+	Gruppe 4}
+
+\begin{document}
+
+\section*{Aufgabe 2}
+\subsection*{a)}
+\subsection*{b)}
+Seien
+\begin{equation}
+\begin{aligned}
+AB \cong CD \label{eq:cong}
+\end{aligned}
+\end{equation}
+und 
+\begin{equation}
+\begin{aligned}
+AB \parallel CD. \label{eq:parallel} \marginpar{Sodass $ A,C $ \enquote{links}}
+\end{aligned}
+\end{equation}
+\subsubsection*{Behauptung}
+Es gilt $ AC \cong BD $ und $ AC \parallel BD $.
+\subsubsection*{Beweis}
+Mit (\ref{eq:parallel}) gilt nach (I.29)
+\begin{equation*}
+\begin{aligned}
+\angle BAD \simeq \angle ADC.
+\end{aligned}
+\end{equation*}
+Ferner gilt mit (\ref{eq:cong}) und der gemeinsamen Seite $ AD $ nach (K.6)
+\begin{equation*}
+\begin{aligned}
+\triangle ABD \cong \triangle DCA.
+\end{aligned}
+\end{equation*}
+Dann ist aber auch
+\begin{equation*}
+\begin{aligned}
+AC \cong BD.
+\end{aligned}
+\end{equation*}
+Sei nun weiter $ E \in \ray{BA} $ mit $ AB \cong AE $. Dann ist auch $ AE \parallel CD $.\\
+Dann gilt wie oben
+\begin{equation*}
+\begin{aligned}
+\triangle DBA \cong \triangle DCA \cong \triangle ACE
+\end{aligned}
+\end{equation*}
+Insbesondere gilt damit
+\begin{equation*}
+\begin{aligned}
+\angle DBA \simeq \angle CAE.
+\end{aligned}
+\end{equation*}
+Nach (I.27) gilt dann
+\begin{equation*}
+\begin{aligned}
+AC \parallel BD
+\end{aligned}
+\end{equation*}
+\begin{flushright}
+	$ \Box $
+\end{flushright}
+\section*{MC}
+\begin{enumerate}
+	\item 
+	\item 
+	\item 
+	\item 
+	\item 
+\end{enumerate}
+\end{document}
+
