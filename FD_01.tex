@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+\usepackage{siunitx}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Pascal Gepperth}
+\ifoot{\today}
+
+\begin{document}
+
+\section*{Sitzung 1}
+\subsection*{Uni-Teil}
+\subsubsection*{Zweiter Strahlensatz}
+Es gilt der erste Strahlensatz.\\
+\textbf{Skizze:}
+\begin{center}
+	\begin{tikzpicture}[scale = 2, thick]
+		\coordinate (A) at (2,2);
+		\coordinate (B) at (0,0);
+		\coordinate (C) at (2,0);
+		\coordinate (D) at (3,1);
+		\coordinate (E) at (3,0);
+		\coordinate (F) at (3,3);
+		
+		\draw (A)node[above]{$A$} -- (B)node[below]{$B$} -- (C)node[below]{$C$} -- (A) -- (F)node[above]{$F$} -- (E)node[below]{$E$} -- (C) -- (D)node[right]{$D$};
+	\end{tikzpicture}
+\end{center}
+Es gilt mit dem ersten, erweiterten Strahlensatz und Zentrum $ B $
+\begin{equation}
+\begin{aligned}
+\frac{BC}{CE} = \frac{BA}{AF} \label{eq:ZentrB}
+\end{aligned}
+\end{equation}
+sowie für Zentrum $ E $
+\begin{equation*}
+\begin{aligned}
+\frac{ED}{DF} = \frac{EC}{CB}
+\end{aligned}
+\end{equation*}
+und somit natürlich auch
+\begin{equation}
+\begin{aligned}
+\frac{DF}{ED} = \frac{BC}{CE} \label{eq:ZentrE}
+\end{aligned}
+\end{equation}
+Aus (\ref{eq:ZentrB}) und (\ref{eq:ZentrE}) folgt dann
+\begin{equation*}
+\begin{aligned}
+&&\frac{BA}{AF} &= \frac{DF}{ED}\\
+\Leftrightarrow && \frac{BA}{DF} &= \frac{AF}{ED}
+\end{aligned}
+\end{equation*}
+Da $ AF \parallel CD $ und $ AC \parallel DF $ ist $ ACDF $ ein Parallelogramm. Damit gilt $ AC = DF $ und folglich
+\begin{equation*}
+\begin{aligned}
+&& \frac{BA}{DF} &= \frac{AF}{DE}\\
+\Leftrightarrow && \frac{DE}{DF} &= \frac{AF}{BA}\\
+\Leftrightarrow && \frac{DE}{DF} &= \frac{AF}{BA}\\
+\Leftrightarrow && \frac{DE + DF}{DF} &= \frac{AF + BA}{BA}\\
+\Leftrightarrow && \frac{BA}{DF} &= \frac{AF +BA}{DE + DF}\\
+\Leftrightarrow && \frac{BA}{AC}&= \frac{BF}{EF}
+\end{aligned}
+\end{equation*}
+\subsubsection*{Widerlegung der Umkehrung}
+Betrachte die Punkte $ A(0,0), B(2,2), C(1,0), D(3,0) $.\\
+\textbf{Skizze:}
+\begin{center}
+	\begin{tikzpicture}[scale = 2, thick]
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (2,2);
+		\coordinate (C) at (1,0);
+		\coordinate (D) at (3,0);
+		
+		\draw (B)node[above]{$B$} -- (A)node[left]{$A$} -- (C)node[below]{$C$} -- (D)node[below]{$D$};
+		\draw[dashed] (D) -- (B) -- (C);
+	\end{tikzpicture}
+\end{center}
+Offenbar gilt
+\begin{equation*}
+\begin{aligned}
+\frac{AB}{BC} &= \frac{AB}{BC},
+\end{aligned}
+\end{equation*}
+doch die Geraden $ B\lor C $ und $ B \lor D $ sind verschieden, da $ C \neq D $, es gilt aber
+\begin{equation*}
+\begin{aligned}
+B \in B\lor C \cap B\lor D \neq \emptyset.
+\end{aligned}
+\end{equation*}
+Folglich sind die Geraden nicht parallel.
+\end{document}
+
