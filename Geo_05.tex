@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	Blatt 5\\
+	P.Gepperth, S.Jung\\
+	Gruppe 4}
+
+\begin{document}
+\section*{Aufgabe 1}
+Es gilt
+\begin{equation*}
+\begin{aligned}
+\emptyset \neq Y \text{ ist AUR} :\Leftrightarrow U_Y := \lbrace \overrightarrow{PQ} : Q \in Y \rbrace \text{ ist UVR für ein } P \in Y
+\end{aligned}
+\end{equation*}
+\subsection*{Behauptung}
+\begin{enumerate}[1)]
+	\item
+	\begin{enumerate}[i)]
+		\item
+		\begin{equation*}
+		\begin{aligned}
+		U_Y = \lbrace \overrightarrow{P'Q}: Q\in Y \rbrace \quad \forall P' \in Y
+		\end{aligned}
+		\end{equation*}
+		\item
+		\begin{equation*}
+		\begin{aligned}
+		Y = P' + U_Y \quad \forall P' \in Y
+		\end{aligned}
+		\end{equation*}
+	\end{enumerate}
+\item 
+\begin{equation*}
+\begin{aligned}
+Y \in \mathbb{A}(V) \text{ ist AUR } \Rightarrow U_Y = \lbrace \overrightarrow{PQ}: P,Q \in Y \rbrace \subseteq V \text{ ist UVR}
+\end{aligned}
+\end{equation*}
+Die Umkehrung gilt nicht.
+\end{enumerate}
+\subsection*{Beweis}
+\begin{enumerate}[1)]
+	\item
+	\begin{enumerate}[i)]
+		\item Sei $ P' \in Y $ beliebig. Dann gilt $ \overrightarrow{PP'} \in U_Y $ und es gilt
+		\begin{equation*}
+		\begin{aligned}
+		&& \overrightarrow{PQ} &= \overrightarrow{PP'} + \overrightarrow{P'Q}\\
+		\Leftrightarrow && \underbrace{\overrightarrow{PQ} - \overrightarrow{PP'}}_{\in U_Y} = \overrightarrow{P'Q} \in U_Y.
+		\end{aligned}
+		\end{equation*}
+		Daraus folgt
+		\begin{equation}
+		\begin{aligned}
+		\lbrace \overrightarrow{P'Q} : Q \in Y \rbrace \subseteq U_Y. \label{eq:Inklusion1}
+		\end{aligned}
+		\end{equation}
+		Da $ P \in Y $ gilt $ \overrightarrow{P'P} \in \lbrace \overrightarrow{P'Q} : Q \in Y \rbrace $. Damit gilt nun
+		\begin{equation*}
+		\begin{aligned}
+		&& \overrightarrow{P'Q} &= \overrightarrow{P'P} + \overrightarrow{PQ}\\
+		\Leftrightarrow && \overrightarrow{P'Q} - \overrightarrow{P'P} &= \overrightarrow{PQ} \in 	\lbrace \overrightarrow{P'Q} : Q \in Y \rbrace.
+		\end{aligned}
+		\end{equation*}
+		Damit gilt
+		\begin{equation}
+		\begin{aligned}
+		\lbrace \overrightarrow{PQ} : Q \in Y \rbrace = U_Y \subseteq \lbrace \overrightarrow{P'Q} : Q \in Y \rbrace. \label{eq:Inklusion2}
+		\end{aligned}
+		\end{equation}
+		Mit (\ref{eq:Inklusion1}) und (\ref{eq:Inklusion2}) gilt nun
+		\begin{equation*}
+		\begin{aligned}
+		\lbrace \overrightarrow{P'Q} : Q \in Y \rbrace = U_Y
+		\end{aligned}
+		\end{equation*}
+		\item 
+		\begin{equation*}
+		\begin{aligned}
+		Y &= P + U_Y\\
+		&= \lbrace \overrightarrow{OP} + u : u \in U_Y \rbrace\\
+		&= \lbrace \overrightarrow{OP'} + \underbrace{\overrightarrow{P'P}}_{\in U_Y} + u : u \in U_Y \rbrace \\
+		&= \lbrace \overrightarrow{OP'} + u : u \in U_Y \rbrace\\
+		&= P' + U_Y
+		\end{aligned}
+		\end{equation*}
+	\end{enumerate}
+\item Es gilt
+\begin{equation*}
+\begin{aligned}
+Y \in \mathbb{A}(V) \text{ ist AUR} &\stackrel{\mathrm{Def}}{\Leftrightarrow} U_Y = \lbrace \overrightarrow{PQ} : Q\in Y \rbrace \text{ für ein } P \in Y \text{ ist UVR}\\
+&\stackrel{1.i)}{\Rightarrow} U_Y = \lbrace \overrightarrow{PQ} : Q\in Y \rbrace \quad \forall P \in Y \text{ ist UVR}\\
+&\stackrel{}{\Leftrightarrow} U_Y = \lbrace \overrightarrow{PQ} : P,Q\in Y \rbrace \text{ ist UVR}.
+\end{aligned}
+\end{equation*}
+Man betrachte nun einen Strahl $ Y = \ray{AB} \in \mathbb{A}(V) $, so ist
+\begin{equation*}
+\begin{aligned}
+U_Y = \lbrace \overrightarrow{PQ} : P,Q\in Y \rbrace
+\end{aligned}
+\end{equation*}
+ein UVR. Bekanntlich ist ein Strahl aber kein AUR.
+\end{enumerate}
+\begin{flushright}
+	$ \Box $
+\end{flushright}
+\newpage
+\section*{Aufgabe 3}
+\begin{enumerate}[1)]
+	\item Es sei $ L \subset \mathbb{R}^5 $ gegeben als Lösungsmenge von
+	\begin{equation*}
+	\begin{aligned}
+	x_1 = 1, \quad x_2 = x_5, \quad x_3 = 1, \quad x_4 = 0, \quad x_1 + x_4 = 1
+	\end{aligned}
+	\end{equation*}
+	und $ E $ als Bild der affinen Abbildung $ \mathbb{R}^3 \to \mathbb{R}^5 $
+	\begin{equation*}
+	\begin{aligned}
+	(t_1,t_2,t_3) \mapsto (1,0,0,1,0) + t_1 (0,2,1,-1,2) + t_2(1,0,0,1,0) + t_3(1,2,1,0,2)
+	\end{aligned}
+	\end{equation*}.\\
+	Dann ist
+	\begin{equation*}
+	\begin{aligned}
+	L = (1,0,1,0,0) + t(0,1,0,0,1), \quad t \in \mathbb{R}
+	\end{aligned}
+	\end{equation*}
+	die Parameterform von $ L $ mit $ \dim(L) = 1 $. Für die implizite Form sind $ \dim(\mathbb{R}^5) - \dim(L) = 4 $ Gleichungen nötig. Hierfür wähle man
+	\begin{equation*}
+	\begin{aligned}
+	x_1 = 1, \quad x_2 = x_5, \quad x_3 = 1, \quad x_4 = 0,
+	\end{aligned}
+	\end{equation*}
+	da $ x_1+x_4 = 1 $ hierdurch bereits erfüllt ist.\\
+	Nun ist
+	\begin{equation*}
+	\begin{aligned}
+	E = (1,0,0,1,0) + t_1 (0,2,1,-1,2) + t_2(1,0,0,1,0) + t_3(1,2,1,0,2), \quad t_1,t_2,t_3 \in \mathbb{R}
+	\end{aligned}
+	\end{equation*}
+	die Parameterform von $ E $ mit $ \dim(E) = 3 $. Es gilt damit
+	\begin{equation*}
+	\begin{aligned}
+	x_1 &= 1 + t_2 + t_3\\
+	x_2 &= 2 (t_1 + t_3)\\
+	x_3 &= t_1 + t_3\\
+	x_4 &= 1 - t_1 + t_2\\
+	x_5 &= 2(t_1 + x_3)
+	\end{aligned}
+	\end{equation*}
+	Offenbar gilt
+	\begin{equation}
+	\begin{aligned}
+	x_2 = x_5 \label{eq:impl_1}
+	\end{aligned}
+	\end{equation}
+	und
+	\begin{equation}
+	\begin{aligned}
+	x_1 - x_4 = x_3 \label{eq:impl_2}
+	\end{aligned}
+	\end{equation}
+	Die Gleichungen (\ref{eq:impl_1}) und (\ref{eq:impl_2}) sind $ \dim(\mathbb{R}^5) - \dim(E) = 2 $ Gleichungen und beinhalten alle $ x_i $ für $ i=1,\dots,5 $ und sind damit die implizite Form.
+	\item Man betrachte nun die impliziten Formen von $ L $
+	\begin{equation*}
+	\begin{aligned}
+	x_1 = 1, \quad x_2 = x_5, \quad x_3 = 1, \quad x_4 = 0
+	\end{aligned}
+	\end{equation*}
+	und $ E $
+	\begin{equation*}
+	\begin{aligned}
+	x_2 = x_5, \quad x_1 - x_4 = x_3.
+	\end{aligned}
+	\end{equation*}
+	Eingesetzt ergibt sich
+	\begin{equation*}
+	\begin{aligned}
+	x_3 &= x_1 - x_4\\
+	&= 1 - 0 = 1.
+	\end{aligned}
+	\end{equation*}
+	$ E $ schränkt $ L $ folglich nicht weiter ein. Damit gilt
+	\begin{equation*}
+	\begin{aligned}
+	E \cap L = L,
+	\end{aligned}
+	\end{equation*}
+	$ L $ liegt also in $ E $. Ist dies der Fall, so gilt aber
+	\begin{equation*}
+	\begin{aligned}
+	E \cup L = E
+	\end{aligned}
+	\end{equation*}
+	mit Dimensionen wie oben.
+\end{enumerate}
+
+
+\section*{MC}
+\begin{enumerate}
+	\item falsch
+	\item richtig
+	\item falsch
+	\item richtig
+	\item falsch
+\end{enumerate}
+\end{document}
+
