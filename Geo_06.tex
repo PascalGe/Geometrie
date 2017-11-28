@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+\renewcommand{\vec}{\textbf}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	Blatt 6\\
+	P.Gepperth, S.Jung\\
+	Gruppe 4}
+
+\begin{document}
+
+\section*{Aufgabe 2}
+Seien ein Punkt $ Z = (z_1,z_2,z_3) \in \mathbb{R}^3 $, eine Gerade $ L:t\mapsto p+tr $ und eine Ebene $ E: m_1x_1 + m_2x_x + m_3x_3 = b $ gegeben. Ferner gelte $ Z \notin E $ und $ L \cap E $ ein Punkt.
+\begin{enumerate}
+	\item Es sei $ X = (x_1,x_2,x_3) \in \mathbb{R}^3 $ beliebig. Dann ist
+	\begin{equation*}
+	\begin{aligned}
+	L(X): t \mapsto \vec x + t \vec r
+	\end{aligned}
+	\end{equation*}
+	die zu $ L $ parallel verschobene Gerade, sodass $ X \in L $. Da $ K \cap E $ ein Punkt ist, ist auch $ L(X) \cap E = \lbrace S_1 \rbrace $ genau ein Punkt. Der Schnittpunkt lässt sich wie folgt bestimmen:
+	\begin{equation*}
+	\begin{aligned}
+	&&m_1(x_1+tr_1) +m_2(x_2+tr_2) + m_3(x_3+tr_3) &= b\\
+	\Leftrightarrow && t (m_1r_1+ m_2r_2 + m_3r_3) &= b - m_1x_1 - m_2x_2 - m_3x_3\\
+	\Leftrightarrow && t &= \frac{b - (m_1x_1 + m_2x_2 + m_3x_3)}{m_1r_1 + m_2r_2 + m_3r_3}\\
+	&& &= \frac{b - \langle \vec m, \vec x \rangle}{\langle \vec m, \vec r \rangle}
+	\end{aligned}
+	\end{equation*}
+	Dabei bezeichnet $ \langle \cdot,\cdot \rangle $ das Standardskalarprodukt und
+	\begin{equation*}
+	\begin{aligned}
+	s_1 &= \vec x + \frac{b - \langle \vec m, \vec x \rangle}{\langle \vec m,\vec r \rangle} \cdot \vec r.
+	\end{aligned}
+	\end{equation*}
+	ist die Projektion von $ X $ parallel zu $ L $ auf $ E $.
+	\item Für eine Zentralprojektion auf $ E $ mit Zentrum $ Z \notin E $ wird zuerst eine Ausschlussebene $ H $ bestimmt. Für diese gilt
+	\begin{equation*}
+	\begin{aligned}
+	E \parallel H
+	\end{aligned}
+	\end{equation*}
+	und
+	\begin{equation*}
+	\begin{aligned}
+	Z \in H.
+	\end{aligned}
+	\end{equation*}
+	Damit folgt
+	\begin{equation*}
+	\begin{aligned}
+	H = \lbrace \vec x \in \mathbb{R}^3 : m_1x_1 + m_2x_2 + m_3x_3 = m_1z_1 + m_2z_2 + m_3z_3 \rbrace
+	\end{aligned}
+	\end{equation*}
+	als Ausschlussebene. Sei nun $ X = (x_1,x_2,x_3) \notin H $. Definiere
+	\begin{equation*}
+	\begin{aligned}
+	Y : t \mapsto \begin{pmatrix}
+	z_1 \\ z_2 \\ z_3
+	\end{pmatrix} + t \cdot \underbrace{\begin{pmatrix}
+	x_1 - z_1\\
+	x_2 - z_2\\
+	x_3 - z_3
+	\end{pmatrix}}_{=:\vec v}.
+	\end{aligned}
+	\end{equation*}
+	$ Y $ ist nicht parallel zu $ E $, folglich existiert ein eindeutiger Schnittpunkt $ Y \cap E = \lbrace S_2\rbrace $, der sich analog zum vorangegangenen berechnet. Es gilt
+	\begin{equation*}
+	\begin{aligned}
+	s_2 &= \vec z + \frac{b - \langle \vec m,\vec x\rangle}{\langle \vec m, \vec v \rangle} \cdot \vec v\\
+	&=\vec z + \frac{b - \langle \vec m,\vec x\rangle}{b - \langle \vec m, \vec z \rangle} \cdot \vec v
+	\end{aligned}
+	\end{equation*}
+\end{enumerate}
+
+\section*{MC}
+\begin{enumerate}
+	\item 
+	\item richtig
+	\item 
+	\item 
+	\item richtig
+\end{enumerate}
+\end{document}
+
