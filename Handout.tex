@@ -17,6 +17,7 @@
 
 \usepackage{tabularx}
 \usepackage{tkz-fct}
+\usepackage{multirow}
 
 \addto\captionsngerman{%	
 	\renewcommand{\figurename}{Abb.}	
@@ -60,7 +61,10 @@
 \section{Fachwissenschaftliche Auffassung}
 % Vorüberlegung
 \begin{minipage}{.5\textwidth}
-	Inhalt...
+	\underline{Behauptung:} $AB \cong BC \Rightarrow DE \cong EF$. \vspace*{1em} \\
+	Wegen der Parallelität von $AD, BE$ und $CF$ und den Parallelogrammen $ADGB$ und $BEHC$ gilt: \\
+	$AB \cong DG \land BC \cong EH$ \\
+	Außerdem gilt: $\angle ASD \cong \angle GDE \cong \angle HEF \land \angle DGE \cong \angle EHF$, weil diese Winkel Wechselwinkel sind. Mit $WSW$ folgt dann die Behauptung.
 \end{minipage}
 \begin{minipage}{.5\textwidth}
 	\begin{tikzpicture}[thick]
@@ -93,9 +97,17 @@
 		\draw[thin] (4.2,0.4) -- (4.2,0.6);
 		\draw[thin] (4.15,0.35) -- (4.15,0.55);
 		% nodes
-		\node at ({3-2*.6+.2},{-1+7*.6}) {g};
-		\node at ({4-2*.7+.2},{-1+7*.7}) {h};
-		\node at ({5-2*.8+.2},{-1+7*.8}) {i};
+%		\node at ({3-2*.6+.2},{-1+7*.6}) {g};
+%		\node at ({4-2*.7+.2},{-1+7*.7}) {h};
+%		\node at ({5-2*.8+.2},{-1+7*.8}) {i};
+		\node at (1.9,2.2) {A};
+		\node at (2.7,3.0) {B};
+		\node at (3.4,3.8) {C};
+		\node at (2.55,-.25) {D};
+		\node at (3.55,-.25) {E};
+		\node at (4.55,-.25) {F};
+		\node at (3.2,.9) {G};
+		\node at (4.2,.9) {H};
 	\end{tikzpicture}
 \end{minipage}
 
@@ -129,7 +141,21 @@
 	\end{tikzpicture}
 \end{minipage}
 \begin{minipage}{.5\textwidth}
-	Inhalt...
+	\begin{center}
+		\begin{tikzpicture}[scale=.7]
+		\draw[thick] (7,0) -- (0,0) -- (5,5);
+		\draw[thick] (3,-1) -- ({3-2*.7},{-1+7*.7});
+		\draw[thick] (6,-1) -- ({6-2},{-1+7});
+		\node at (1,1.5) {a};
+		\node at (3,3.5) {b};
+		\node at (1.2,-.5) {c};
+		\node at (4.2,-.5) {d};		
+		\end{tikzpicture}
+	\end{center}
+	\hspace{2cm}
+	\begin{align*}
+		\frac{n}{m} = \frac{n\varepsilon_1}{m\varepsilon_1} = \frac{n\varepsilon_2}{m\varepsilon_2} \Leftrightarrow \frac{a+b}{a} = \frac{c+d}{c}
+	\end{align*}
 \end{minipage}
 \section{Schulische Auffassung}
 Beweise durch Gegenbeispiele bieten eine schöne Möglichkeit "`universitätsnahe`` Mathematik für SuS zugänglich zu machen. Im Falle der Umkehrungen der Strahlensätze ist dies eine anspruchsvolle (aber nicht unmögliche) Aufgabe an Lehrkraft und SuS. Darum lassen sich die Umkehrungen auch nicht in jedem Schulbuch finden. \\
@@ -148,5 +174,28 @@ Folgende anspruchsvolle Aufgabe wurde in einem Schulbuch (Elemente der Mathemati
 \text{Wenn } g\parallel h\text{, dann gilt } \frac{|SA_1|}{|A_1A_2|}=\frac{|SB_1|}{|B_1B_2|} 
 \end{align}
 \textit{Gib den Kehrsatz an und widerlege ihn.}
-
+\section{Aufbau/Struktur}
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{c|c|c}
+		& UNI & SCHULE\\ \hline
+		& Strahlensätze & Zentrische Streckung\\
+		& $\Downarrow$ & $\Downarrow$ \\
+		& Zentrische Streckung & Ähnlichkeite\\
+		& $\Downarrow$ & $\Downarrow$ \\
+		& Ähnlichkeit & Strahlensätze\\
+		&&\\ \hline
+		\multirow{6}{1.8cm}{Gründe} & \multirow{6}{5cm}{\begin{itemize}
+				\item  Mathematische Korrektheit
+		\end{itemize}}  & \multirow{1}{4cm}{\begin{itemize}
+				\item Anschaulichkeit
+				\item Verständlichkeit
+				\item Intuition
+		\end{itemize}}\\
+		& &\\
+		& &\\
+		& &\\
+		& &	
+	\end{tabular}
+\end{table}
 \end{document}
