@@ -114,12 +114,64 @@ Seien ein Punkt $ Z = (z_1,z_2,z_3) \in \mathbb{R}^3 $, eine Gerade $ L:t\mapsto
 	\end{equation*}
 \end{enumerate}
 
+\newpage
+\section*{Aufgabe 4}
+Es sei $ f: \mathbb{R}^2 \to \mathbb{R}^2 $ eine stetige Kollineation. Weiter sei o.E. $ f(0) = 0 $. Nach VL ist $ f $ parallelentreu auf Geraden.
+\subsection*{Behauptung}
+\begin{equation*}
+\begin{aligned}
+f(x+y) = f(x) + f(y)
+\end{aligned}
+\end{equation*}
+für unabhängige $ x,y \in \mathbb{R}^2 $.
+\subsection*{Beweis}
+Seien $ x,y \in \mathbb{R}^2 $ unabhängig. Es gilt
+\begin{equation*}
+\begin{aligned}
+0 \lor x \parallel y \lor (x+y).
+\end{aligned}
+\end{equation*}
+Aus der Parallelentreue folgt damit
+\begin{equation*}
+\begin{aligned}
+f(0) \lor f(x) \parallel f(y) \lor f(x+y).
+\end{aligned}
+\end{equation*}
+Ferner gilt damit
+\begin{equation*}
+\begin{aligned}
+-x \lor (y)\parallel f(-x) \lor f(y)
+\end{aligned}
+\end{equation*}
+mit
+\begin{equation*}
+\begin{aligned}
+f(y) = f(-x) + f(y) + f(x).
+\end{aligned}
+\end{equation*}
+Daraus folgt
+\begin{equation*}
+\begin{aligned}
+f(-x) = -f(x)
+\end{aligned}
+\end{equation*}
+Ferner gilt auch
+\begin{equation*}
+\begin{aligned}
+&&f(y) &= f(x+y) + f(-x)\\
+&&&= f(x+y) - f(x)\\
+\Leftrightarrow && f(x) + f(y) &= f(x+y)
+\end{aligned}
+\end{equation*}
+\begin{flushright}
+	$ \Box $
+\end{flushright}
 \section*{MC}
 \begin{enumerate}
-	\item 
+	\item falsch
 	\item richtig
-	\item 
-	\item 
+	\item richtig
+	\item falsch
 	\item richtig
 \end{enumerate}
 \end{document}
