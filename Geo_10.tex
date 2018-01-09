@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+\renewcommand{\vec}{\textbf}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	Blatt 10\\
+	P.Gepperth, S.Jung\\
+	Gruppe 4}
+
+\begin{document}
+
+\section*{Aufgabe 1}
+Man betrachte $ \mathbb{P}_2(\mathbb{R}) = \mathbb{R}^2 \cup H_\infty $ und $ \mathbb{P}_1(\mathbb{C}) = \mathbb{C} \cup \lbrace \infty \rbrace $ mit den Standardkarten, also $ H_\infty : X_3 = 0, \infty = \left[1:0\right] $.
+\subsection*{Behauptung}
+\begin{enumerate}
+	\item $ \pi: \mathbb{P}_2(\mathbb{R}) \to \mathbb{P}_1(\mathbb{C}), \left[X_1:X_2:X_3\right] \mapsto \left[X_1 + iX_2 : X_3\right] $ ist wohldefiniert und surjektiv.
+	\item $ \pi $ induziert Bijektion der Standardkarte $ \mathbb{R}^2 \equiv \lbrace X_3 \neq 0 \rbrace $ auf $ \mathbb{C} \equiv \lbrace Z_2 \neq 0 \rbrace $.
+	\item $ \pi^{-1}(\infty) = H_\infty $.
+\end{enumerate}
+\subsection*{Beweis}
+\begin{enumerate}
+	\item  Es seien
+	\begin{equation*}
+	\begin{aligned}
+	\left[X_1:X_2:X_3\right] = \left[X_1':X_2':X_3'\right],
+	\end{aligned}
+	\end{equation*}
+	dann gilt
+	\begin{equation*}
+	\begin{aligned}
+	X_1' &= \lambda X_1\\
+	X_2' &= \lambda X_2\\
+	X_3' &= \lambda X_3
+	\end{aligned}
+	\end{equation*}
+	für ein $ \lambda \in \mathbb{R}\backslash\lbrace0\rbrace $. Dann ist
+	\begin{equation*}
+	\begin{aligned}
+	\pi \left(\left[X_1:X_2:X_3\right]\right) = \left[X_1+iX_2 : X_3\right]
+	\end{aligned}
+	\end{equation*}
+	und
+	\begin{equation*}
+	\begin{aligned}
+	\pi\left(\left[X_1':X_2':X_3'\right]\right) &= \left[X_1'+iX_2':X_3'\right]\\
+	&= \left[\lambda X_1+i\lambda X_2:\lambda X_3'\right]\\
+	&=\left[X_1+iX_2 : X_3\right]\\
+	&= \pi \left(\left[X_1:X_2:X_3\right]\right).
+	\end{aligned}
+	\end{equation*}
+	Folglich ist $ \pi $ wohldefiniert.\\
+	Sei nun weiter $ \left[Z : X_3\right] \in \mathbb{P}_1(\mathbb{C}) $ beliebig, mit $ Z \in \mathbb{C} $. Wähle
+	\begin{equation*}
+	\begin{aligned}
+	X_1 &= \mathrm{Re}(Z) \in \mathbb{R}\\
+	X_2 &= \mathrm{Im}(Z) \in \mathbb{R},
+	\end{aligned}
+	\end{equation*}
+	so gilt
+	\begin{equation*}
+	\begin{aligned}
+	\pi\left(\left[X_1:X_2:X_3\right]\right) &= \left[X_1+iX_2:X_3\right]\\
+	&= \left[Z: X_3\right].
+	\end{aligned}
+	\end{equation*}
+	Somit ist $ \pi $ surjektiv.
+	\item 
+\end{enumerate}
+
+\end{document}
+
