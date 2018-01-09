@@ -40,6 +40,8 @@ urlcolor=black ]{hyperref}
 \renewcommand*{\marginfont}{\footnotesize}
 \usepackage{siunitx}
 
+\usetikzlibrary{arrows,matrix,positioning}
+\usetikzlibrary{calc,decorations.markings}
 \usetikzlibrary{angles,quotes}
 \newcommand{\cross}[1]{
 \draw ($(#1) + (-.1,-.1)$) -- ($(#1) + (.1,.1)$);
@@ -402,5 +404,202 @@ Für jede \textit{zentrische Streckung} mit einem positiven Streckfaktor $ k $ g
 	\item Übungsaufgabe: Erkenne ob ZS
 	\item Übungsaufgabe: Nicht erkennbar, was Ausgangs- und Bildfigur (interpretativ)
 \end{itemize}
+\newpage
+\section*{Sitzung 3}
+\subsection*{Schul-Teil}
+\subsubsection*{Exkurs: Ähnlichkeitssätze am Kreis}
+\paragraph{Definitionen} Im folgenden bezeichne $ M $ den Mittelpunkt eines Kreisbogens mit Endpunkten $ A $ und $ B $. Ferner sei $ P $ ein beliebiger Punkt auf dem Kreisbogen.
+\begin{description}
+	\item[Peripheriewinkel] Der Winkel $ \angle APB $ wird als Peripheriewinkel der Kreissehne $ AB $ bezeichnet. Zu einer Kreissehne existieren also beliebig viele Peripheriewinkel (da $ P $ beliebig).
+	\item[Zentriwinkel] Der Winkel $ \angle AMB $ ist der zugehörige Zentriwinkel. Dieser kann auch \textit{überstumpf} ($ > 180^\circ $) sein. Im folgenden sei er folgendermaßen gewählt: Ist der Peripheriewinkel spitz, so ist der Zentriwinkel kleiner 180$ ^\circ $. Ist der Peripheriewinkel stumpf, so ist der Zentriwinkel überstumpf.
+\end{description}
+\paragraph{Zentri-Peripheriewinkelsatz} Der Zentriwinkel ist doppelt so groß wie der Peripheriewinkel. ($ \alpha = 2 \beta $)\\
+\begin{minipage}{.6\textwidth}
+\textbf{Beweis:} Das Dreieck $ \triangle APM $ ist gleichschenklig. Es gilt
+\begin{equation*}
+\begin{aligned}
+\angle APM = \angle PAM := \epsilon
+\end{aligned}
+\end{equation*}
+Damit ist
+\begin{equation*}
+\begin{aligned}
+\gamma = 180^\circ - 2 \epsilon
+\end{aligned}
+\end{equation*}
+Analog gilt
+\begin{equation*}
+\begin{aligned}
+\angle BPM = \angle PBM := \xi
+\end{aligned}
+\end{equation*}
+Damit ist
+\begin{equation*}
+\begin{aligned}
+\delta = 180^\circ - 2 \xi
+\end{aligned}
+\end{equation*}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+	\includegraphics[width=\linewidth]{peripherie_und_zentriwinkel}
+\end{minipage}
+Damit gilt dann
+\begin{equation*}
+\begin{aligned}
+\alpha &= 360^\circ - \gamma - \delta\\
+&= 2\epsilon + 2 \xi\\
+&= 2 \beta
+\end{aligned}
+\end{equation*}
+da $ \beta = \epsilon + \xi $.\\
+\\
+Für den zweiten Fall betrachte man stumpfe Peripheriewinkel.
+\begin{center}
+	\begin{tikzpicture}[scale = 3]
+		\coordinate (M) at (0,0);
+		\coordinate (A) at (${1/sqrt(13)}*(-3,-2)$);
+		\coordinate (B) at (${1/sqrt(13)}*(3,-2)$);
+		\coordinate (P) at (0,-1);
+		
+		\draw (M) circle [radius = 1];
+		\draw (A) node[left]{$A$} -- (M) node[below]{$M$} -- (B) node[right] {$B$} -- (P) node [below]{$P$} -- (A) -- (B);
+		\draw pic[draw, angle radius=.5cm] {angle=B--M--A}; % alpha'
+		\draw pic[draw, angle radius=.5cm] {angle=A--M--B}; % alpha
+		\draw pic[draw, angle radius=.5cm] {angle=B--A--M}; % gamma1
+		\draw pic[draw, angle radius=.5cm] {angle=P--A--B}; % delta
+		\draw pic[draw, angle radius=.5cm] {angle=B--P--A}; % beta
+		\draw pic[draw, angle radius=.5cm] {angle=A--B--P}; % epsilon
+		\draw pic[draw, angle radius=.5cm] {angle=M--B--A}; % gamma 2
+		
+		\draw (0,.1) -- ($(0,.1) + (.1,.1)$) node[right]{$\alpha$};
+		\draw (.05,-.1) -- ($(.05,-.1) + (.2,0)$) node[right]{$\alpha'$};
+		\draw ($ (A) + (.1,.05)$) -- ($(A) + (.2,.1)$) node[right]{$\gamma$};
+		\draw ($ (A) + (.1,-.04)$) -- ($(A) + (.2,-.06)$) node[right]{$\delta$};
+		\node at ($(P) + (0,.09)$) {$\beta$};
+		\draw ($ (B) + (-.1,-.04)$) -- ($(B) + (-.2,-.06)$) node[left]{$\epsilon$};
+		\draw ($ (B) + (-.1,.05)$) -- ($(B) + (-.2,.1)$) node[left]{$\gamma$};
+	\end{tikzpicture}
+\end{center}
+Damit gilt
+\begin{equation*}
+\begin{aligned}
+\alpha' = 360^\circ - \alpha
+\end{aligned}
+\end{equation*}
+sowie
+\begin{equation*}
+\begin{aligned}
+&& 180^\circ &= 2\gamma + \alpha'\\
+\Leftrightarrow && 180^\circ &= 2 \gamma + 360^\circ - \alpha\\
+\Leftrightarrow && \alpha &= 2 \gamma + 180^\circ
+\end{aligned}
+\end{equation*}
+und
+\begin{equation*}
+\begin{aligned}
+2 \gamma + \delta + \epsilon &= \beta
+\end{aligned}
+\end{equation*}
+Damit gilt dann
+\begin{equation*}
+\begin{aligned}
+\alpha &= 180^\circ + 2 \gamma\\
+&= \beta + 180^\circ - \delta - \epsilon\\
+&= 2 \beta
+\end{aligned}
+\end{equation*}
+\begin{flushright}
+	$ \Box $
+\end{flushright}
+\paragraph{Folgerung} Da die Kreissehne $ AB $ den Zentriwinkel bereits eindeutig definiert, der Punkt $ P $ aber beliebig ist, sind alle Peripheriewinkel auf der gleichen Seite von $ AB $ gleich groß.
+\paragraph{Sehnensatz} Sei $ S $ ein Punkt innerhalb eines Kreises. Für alle Sehnen durch $ S $ ist das Produkt der jeweiligen Sehnenabschnitte konstant.
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (M) at (0,0);
+		\coordinate (S) at (1,-1);
+		\coordinate (A') at ($(S) + (-2,-3)$); %-1,-4 
+		\coordinate (B') at ($(S) + (2,-4)$); % 3,-5
+		\coordinate (C') at ($(S) + (2,3)$); % 3,2
+		\coordinate (D') at ($(S) + (-2,4)$); % -1,3
+		\coordinate (A) at ($3/sqrt(1^2+4^2)*(A')$);
+		\coordinate (B) at ($3/sqrt(3^2+5^2)*(B')$);
+		\coordinate (C) at ($3/sqrt(3^2+2^2)*(C')$);
+		\coordinate (D) at ($3/sqrt(1^2+3^2)*(D')$);
+
+	
+		\draw (M) circle [radius = 3];
+		\node at (.8,-.7) [anchor=south]{$S$};
+		\draw (A) node[anchor=north east]{$A$}  -- (C) node[anchor=west]{$C$};
+		\draw (B) node[anchor=north west]{$B$} -- (D) node[anchor=south east]{$D$};
+	\end{tikzpicture}
+\end{center}
+\begin{proof}
+	Man betrachte die Peripheriewinkel über der Sehne $ AD $ in den Punkten $ B $ und $ C $. Dann gilt
+	\begin{equation*}
+	\begin{aligned}
+	\angle ABD = \angle ACD
+	\end{aligned}
+	\end{equation*}
+	Ferner sind die Scheitelwinkel gleich groß, also
+	\begin{equation*}
+	\begin{aligned}
+	\angle ASB = \angle CSD
+	\end{aligned}
+	\end{equation*}
+	Infolgedessen sind $ \triangle ABS $ und $ \triangle CDS $ ähnlich. Damit gilt
+	\begin{equation*}
+	\begin{aligned}
+	&& \frac{AS}{BS} &= \frac{SD}{SC}\\
+	\Leftrightarrow && AS \cdot SC &= BS \cdot SD
+	\end{aligned}
+	\end{equation*}
+\end{proof}
+\paragraph{Höhenabschnittsatz}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,-1);
+		\coordinate (C) at (3,4);
+		\coordinate (M) at ($1/2*(B)$);
+		\coordinate (HA) at ($1/26*(95,19)$);
+		\coordinate (HB) at ($8/25*(3,4)$);
+		
+		\draw (M) circle [radius = sqrt(4.25)];
+		\draw (A) node[left]{$A$} -- (B) node[right]{$B$} -- (C) node[above]{$C$} -- (A);
+		\draw (A) -- (HA) node[right]{$h_A$};
+		\draw (B) -- (HB) node[anchor = south east]{$h_B$};
+	\end{tikzpicture}
+\end{center}
+\begin{proof}
+	Der Kreisbogen über AB ist ein Thaleskreis und erklärt die rechten Winkel. Mit dem Sehnensatz folgt die Behauptung.
+\end{proof}
+\paragraph{Sekantensatz} Sei $ S $ ein Punkt außerhalb des Kreises. Das Produkt jeweiliger Sekantenabschnitte von Sekanten durch $ S $ ist konstant.
+\begin{center}
+	\begin{tikzpicture}[scale = 3]
+		\coordinate (M) at (0,0);
+		\coordinate (A) at ($1/sqrt(5)*(-1,-2)$);
+		\coordinate (B) at ($1/sqrt(3^2+2^2)*(3,-2)$);
+		\coordinate (AB) at ($(B)-(A)$);
+		\coordinate (D) at ($1/sqrt(5)*(-1,2)$);
+		\coordinate (C) at ($1/sqrt(3^2+2^2)*(3,2)$);
+		\coordinate (DC) at ($(C)-(D)$);
+%		\coordinate (S) at ();
+		\draw (M) circle [radius = 1];
+		\draw (A) node [anchor=north east]{$A$} -- ($(A) + 2.63*(AB)$) node [right] {$S$};
+		\draw (D) node [anchor=south]{$D$} -- ($(D) + 2.63*(DC)$);
+		\draw (A) -- (C) node[anchor= south west]{$C$};
+		\draw (D) -- (B) node[anchor= north west]{$B$};
+	\end{tikzpicture}
+\end{center}
+\begin{proof}
+	Eine Sekante schneide den Kreis in $ A $ und $ B $, eine weitere in den Punkten $ C $ und $ D $. Dann sind $ \triangle SAC $ und $ \triangle SBD $ ähnlich. Damit gilt dann
+	\begin{equation*}
+	\begin{aligned}
+	&& \frac{SC}{SB} &= \frac{SA}{SD}\\
+	\Leftrightarrow && SC \cdot SD &= SA \cdot SB
+	\end{aligned}
+	\end{equation*}
+\end{proof}
+\paragraph{Wie wird das in der Schule gemacht?} In der Schule sind die Sätze nicht im Pflichtprogramm oder werden gar formal bewiesen.
 \end{document}
 
