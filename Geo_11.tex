@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+\renewcommand{\vec}{\textbf}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	Blatt 11\\
+	P.Gepperth, S.Jung\\
+	Gruppe 4}
+
+\begin{document}
+\section*{Aufgabe 3}
+Sei $ \triangle ABC \in \mathbb{C} $.
+\subsection*{Behauptung}
+\begin{enumerate}[i)]
+	\item Der Schwerpunkt $ S $ von $ \triangle ABC $ ist
+	\begin{equation*}
+	\begin{aligned}
+	S = \frac{1}{3} \left(A + B + C\right)
+	\end{aligned}
+	\end{equation*}
+	\item Satz von Napoleon
+\end{enumerate}
+\subsection*{Beweis}
+\begin{enumerate}[i)]
+	\item Seien die Seitenmittelpunkte
+	\begin{equation*}
+	\begin{aligned}
+	m_A &= \frac{1}{2} \left(B + C\right)\\
+	m_B &= \frac{1}{2} \left(A + C\right)\\
+	m_C &= \frac{1}{2} \left(A + B\right)
+	\end{aligned}
+	\end{equation*}
+	Dann gilt
+	\begin{equation*}
+	\begin{aligned}
+	\frac{\left|A - B\right|}{\left|m_C - B\right|} &= \frac{2}{1}\\
+	&= \frac{\left|B - C\right|}{\left|m_A - B\right|}
+	\end{aligned}
+	\end{equation*}
+	Mit dem ersten Strahlensatz (Zentrum in $ B $) folgt damit
+	\begin{equation*}
+	\begin{aligned}
+	m_A - m_C &= \lambda\left(A - C\right)
+	\end{aligned}
+	\end{equation*}
+	für ein $ \lambda \in \mathbb{R}^* $. Mit dem zweiten Strahlensatz folgt damit
+	\begin{equation*}
+	\begin{aligned}
+	\frac{\left|A-C\right|}{\left|m_A - m_C\right|} &= \frac{2}{1}
+	\end{aligned}
+	\end{equation*}
+	Man betrachte nun die Strahlensatzfigur mit Zentrum $ S $, so gilt
+	\begin{equation*}
+	\begin{aligned}
+	\frac{2}{1} &= \frac{\left|A-C\right|}{\left|m_A - m_C\right|} = \frac{\left|A - S\right|}{\left|S - m_A\right|}
+	\end{aligned}
+	\end{equation*}
+	Analog für die anderen Seiten. Damit folgt
+	\begin{equation*}
+	\begin{aligned}
+	S &= m_A + \frac{1}{3} \left(C-m_C\right)\\
+	&= \frac{1}{2} \left(A+B\right) + \frac{1}{3} \left(C - \frac{1}{2}\left(A + B\right)\right)\\
+	&= \frac{1}{3} \left(C - \frac{1}{2}\left(A+B\right) + \frac{3}{2}\left(A+B\right)\right)\\
+	&= \frac{1}{3} \left(A + B + C\right)
+	\end{aligned}
+	\end{equation*}
+	\item 
+\end{enumerate}
+
+\end{document}
+
