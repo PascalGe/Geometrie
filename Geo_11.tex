@@ -49,6 +49,67 @@ urlcolor=black ]{hyperref}
 	Gruppe 4}
 
 \begin{document}
+	\section*{Aufgabe 1}
+	Es sei $ \mathcal K $ ein Kreis mit Mittelpunkt $ M $. Weiter seien zwei Punkte $ A,B \in \mathcal K $. Weiter sei $ X \notin A\lor B$. Dann gilt
+	\begin{align*}
+	X \in \mathcal{K} \quad \Leftrightarrow \quad 2 \angle AXB = \angle AMB
+	\end{align*}
+	\begin{proof} Man betrachte Hin- und Rückrichtung.
+		\begin{itemize}
+			\item[\enquote{$ \Rightarrow $}] Da $ A,X \in \mathcal K $ gilt $ \left|AM\right| = \left|XM\right| $ und damit $ \triangle AMX $ gleichschenklig. Damit gilt
+			\begin{align*}
+			\angle XAM = \angle AXM
+			\end{align*}
+			und auch
+			\begin{align}
+			\angle XMA = \mathrm{GW} - 2\angle AXM \label{eq:*}
+			\end{align}
+			Sei nun $ S \in \left(X \lor M\right) \cap \left(A \lor B\right) $. Dann gilt
+			\begin{align*}
+			\angle XMA + \angle AMS = \mathrm{GW}
+			\end{align*}
+			und somit
+			\begin{align*}
+			\angle AMS &\stackrel{\phantom{(\ref{eq:*})}}{=} \mathrm{GW} - \angle XAM\\
+			&\stackrel{(\ref{eq:*})}{=} 2 \angle AXM
+			\end{align*}
+			Analog gilt für $ \triangle BMX $
+			\begin{align*}
+			\angle BMS = 2 \angle BXM
+			\end{align*}
+			Folglich gilt damit
+			\begin{align*}
+			\angle AMB &= \angle AMS + \angle BMS\\
+			&= 2\left(\angle AXM + \angle BXM\right)\\
+			&= 2 \angle AXB
+			\end{align*}
+			\item[\enquote{$ \Leftarrow $}] Es sei $ 2\angle AXB = \angle AMB $. Sei weiter $ D \in \left(A\lor X\right) \cap \mathcal{K} $, also insbesondere $ D \in \mathcal K $. Dann gilt für $ D $ (wie oben)
+			\begin{align*}
+			\angle ADB = \frac{1}{2} \angle AMB \stackrel{Vor.}{=} \angle AXB
+			\end{align*}
+			Mit der Winkelsumme eines Dreiecks folgt nun
+			\begin{align*}
+			\angle ABD &= \mathrm{GW} - \angle BAD - \angle ADB\\
+			&= \mathrm{GW} - \angle BAD - \angle AXB\\
+			&= \angle ABX
+			\end{align*}
+			\newpage Aufgrund der gemeinsamen Seite $ AB $ folgt mit WSW, dass
+			\begin{align*}
+			\triangle ADB \cong \triangle AXB
+			\end{align*}
+			Folglich gilt $ X = D $ und es folgt die Behauptung.
+		\end{itemize}
+	\end{proof}
+	\noindent Liegen $ A,B \in \mathcal{K} $ so, dass $ M \in A \lor B $, so ist
+	\begin{align*}
+	\angle AMB = \mathrm{GW}
+	\end{align*}
+	Für jedes $ A,B \neq X \in \mathcal{K} $ gilt folglich
+	\begin{align*}
+	\angle AXB = \frac{1}{2} \mathrm{GW} = \mathrm{RW}
+	\end{align*}
+	Es gilt also der Satz des Thales. 
+	\newpage
 \section*{Aufgabe 3}
 Sei $ \triangle ABC \in \mathbb{C} $.
 \subsection*{Behauptung}
@@ -105,7 +166,7 @@ Sei $ \triangle ABC \in \mathbb{C} $.
 	&= \frac{1}{3} \left(A + B + C\right)
 	\end{aligned}
 	\end{equation*}
-	\item 
+	\item Siehe Skript
 \end{enumerate}
 
 \end{document}
