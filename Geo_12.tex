@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{scrpage2}
+\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
+\usepackage[bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=false,
+pdfstartpage=1,
+baseurl=,
+pdftitle={ },
+pdfauthor={Pascal Gepperth},
+pdfstartview={FitH},
+pdfsubject={ },
+pdfkeywords={ },
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+pagecolor=black,
+urlcolor=black ]{hyperref}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\usepackage{enumerate}
+\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\renewcommand*{\marginfont}{\footnotesize}
+\usepackage{siunitx}
+
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+\pagestyle{scrheadings}
+\ohead{Geometrie\\
+	P.Gepperth, S.Jung\\
+	Blatt 12\\
+	Gruppe 4}
+
+\begin{document}
+	
+	\section*{Aufgabe 1}
+	Betrachtet wird eine Familie verallgemeinerter Kreise in $ \mathbb{P}_1(\mathbb{C}) = \mathbb{C} \cup \lbrace \infty \rbrace $ mit besonderer Lage in $ \mathbb{C} $ und eine Möbiustransformation $ \mathbb{P}(A), A \in Sl_2(\mathbb{C}) $. Die Bildfamilie in $ \mathbb{C} $ unter $ \mathbb{P}(A) $ sieht wie folgt aus, wenn die Familie in $ \mathbb{C} $...
+	\begin{enumerate}
+		\item ... aus parallelen Geraden besteht und...
+		\begin{enumerate}
+			\item $ \mathbb{P}(A)(\infty) = \infty $.
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[->,>=latex,thick] (-3,0) -- (3,0) node [below]{$x$};
+				\draw[->,>=latex,thick] (0,-3) -- (0,3) node [left]{$y$};
+				\begin{scope}
+				\clip (-3,-3) rectangle (3,3);
+				\draw (-4,-7) -- (5,3);
+				\draw (-4,-6) -- (5,4);
+				\draw (-4,-5) -- (5,5);
+				\draw (-4,-4) -- (5,6);
+				\draw (-4,-3) -- (5,7);
+				\draw (-4,-2) -- (5,8);
+				\end{scope}
+				\end{tikzpicture}
+			\end{center}
+			Der unendlich ferne Punkt wird auf sich selbst abgebildet. Folglich schneiden sich parallele Geraden nach der Möbiustransformation wieder im unendlich fernen Punkt und sich in $ \mathbb{C} $ parallel.
+			\item $ \mathbb{P}(A)(\infty) \neq \infty $.
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[->,>=latex,thick] (-3,0) -- (3,0) node [below]{$x$};
+				\draw[->,>=latex,thick] (0,-3) -- (0,3) node [left]{$y$};
+				\begin{scope}
+				\clip (-3,-3) rectangle (3,3);
+				\draw (-1.3,1.5) circle [radius = 1.5];
+				\draw (-.8,1.5) circle [radius = 1];
+				\draw (-.3,1.5) circle [radius = .5];
+				\draw (.7,1.5) circle [radius = .5];
+				\draw (1.2,1.5) circle [radius = 1];
+				\draw (1.7,1.5) circle [radius = 1.5];
+				\end{scope}
+				\end{tikzpicture}
+			\end{center}
+			Die parallelen Geraden schneiden sich im unendlich fernen Punkt. Dieser wird nun nicht auf sich selbst abgebildet. Die vK schneiden sich somit in genau einem Punkt in $ \mathbb{C} $.
+		\end{enumerate}
+		\item ... aus allen Geraden durch $ z_0 $ besteht und $ \mathbb{P}(A)(z_0) = \infty $
+		\begin{center}
+			\begin{tikzpicture}
+			\draw[->,>=latex,thick] (-3,0) -- (3,0) node [below]{$x$};
+			\draw[->,>=latex,thick] (0,-3) -- (0,3) node [left]{$y$};
+			\begin{scope}
+			\clip (-3,-3) rectangle (3,3);
+			\draw (-4,6) -- (7,-4);
+			\draw (-4,5) -- (7,-5);
+			\draw (-4,4) -- (7,-6);
+			\draw (-4,3) -- (7,-7);
+			\draw (-4,2) -- (7,-8);
+			\draw (-4,1) -- (7,-9);
+			\end{scope}
+			\end{tikzpicture}
+		\end{center}
+		Die Geraden schneiden sich in $ z_0 $. Dieser wird auf den unendlich fernen Punkt abgebildet. Folglich schneiden sich die Bilder der Geraden nur im unendlich Fernen Punkt und sind demnach parallel.
+		\item ... aus allen Kreisen durch $ z_1 \neq z_z $ besteht und $ \mathbb{C}(A)(z_1) = \infty $
+		\begin{center}
+			\begin{tikzpicture}
+			\coordinate (Z) at (1,2);
+			\draw[->,>=latex,thick] (-3,0) -- (3,0) node [below]{$x$};
+			\draw[->,>=latex,thick] (0,-3) -- (0,3) node [left]{$y$};
+			\begin{scope}[rotate=10]
+			\clip (-3,-3) rectangle (3,3);
+			\draw ($(Z) - 2*(2,2)$) -- ($(Z) + 2*(2,2)$);
+			\draw ($(Z) - 2*(1,2)$) -- ($(Z) + 2*(1,2)$);
+			\draw ($(Z) - 2*(2,1)$) -- ($(Z) + 2*(2,1)$);
+			\draw ($(Z) - 2*(-2,2)$) -- ($(Z) + 2*(-2,2)$);
+			\draw ($(Z) - 2*(2,-2)$) -- ($(Z) + 2*(2,-2)$);
+			\draw ($(Z) - 2*(2,-1)$) -- ($(Z) + 2*(2,-1)$);
+			\draw ($(Z) - 2*(-1,2)$) -- ($(Z) + 2*(-1,2)$);
+			\draw ($(Z) - 2*(0,2)$) -- ($(Z) + 2*(0,2)$);
+			\draw ($(Z) - 2*(2,0)$) -- ($(Z) + 2*(2,0)$);
+			\end{scope}
+			\end{tikzpicture}
+		\end{center}
+		Alle Kreise schneiden sich in zwei Punkten, von denen einer auf den unendlich fernen Punkt abgebildet wird. Folglich schneiden sich die Bilder in genau einem Punkt in $ \mathbb{C} $.
+		\item ... aus allen Kreisen besteht, die sich nur in $ Z_1 $ schneiden und $ \mathbb{P}(A)(z_1) = \infty $
+		\begin{center}
+			\begin{tikzpicture}
+			\draw[->,>=latex,thick] (-3,0) -- (3,0) node [below]{$x$};
+			\draw[->,>=latex,thick] (0,-3) -- (0,3) node [left]{$y$};
+			\begin{scope}
+			\clip (-3,-3) rectangle (3,3);
+			\draw (-4,6) -- (7,-4);
+			\draw (-4,5) -- (7,-5);
+			\draw (-4,4) -- (7,-6);
+			\draw (-4,3) -- (7,-7);
+			\draw (-4,2) -- (7,-8);
+			\draw (-4,1) -- (7,-9);
+			\end{scope}
+			\end{tikzpicture}
+		\end{center}
+		Die Kreise schneiden sich in genau einem Punkt, welcher auf den unendlich fernen Punkt abgebildet wird. Folglich schneiden sich die Bilder im unendlich fernen Punkt und besitzen in $ \mathbb{C} $ keine weiteren Schnittpunkte. Folglich sind die Bilder parallele Geraden in $ \mathbb{C} $.
+	\end{enumerate}
+\end{document} 
