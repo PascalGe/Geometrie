@@ -1,605 +1,355 @@
-\documentclass[11pt]{article}
+\documentclass[a4paper]{article}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{lmodern}
-\usepackage[german=quotes]{csquotes}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{graphicx}
-\usepackage{scrpage2}
-\usepackage{geometry}
-\usepackage{tikz, tikz-3dplot}
-\usepackage[bookmarks=true,
-bookmarksopen=true,
-bookmarksnumbered=false,
-pdfstartpage=1,
-baseurl=,
-pdftitle={ },
-pdfauthor={Pascal Gepperth},
-pdfstartview={FitH},
-pdfsubject={ },
-pdfkeywords={ },
-breaklinks=true,
-colorlinks=true,
-linkcolor=black,
-anchorcolor=black,
-citecolor=black,
-filecolor=black,
-menucolor=black,
-pagecolor=black,
-urlcolor=black ]{hyperref}
-\newcommand{\de}{\mathrm{d}}
-\newcommand{\dif}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
-\usepackage{enumerate}
-\newcommand{\ray}[1]{\stackrel{\rightharpoonup}{#1}}
-\usepackage{marginnote}
-\let\marginpar\marginnote
-\renewcommand*{\marginfont}{\footnotesize}
-\usepackage{siunitx}
+\usepackage[utf8]{inputenc}    %Kodierung
+\usepackage[ngerman]{babel}    %Sprache
+\usepackage[hidelinks]{hyperref} %Erlaubt Hyperlinks einzubauen und versteckt komische Kästen und Co.
+\usepackage{amsmath}           %macht
+\usepackage{amsfonts}          %       Mathe
+\usepackage{amssymb}           %              mächtiger
+\usepackage{graphicx}          %erlaubt Graphiken einzubinden (.eps für dvi und ps sowie .jpg für pdf)
+%\usepackage{picins} 		   %Bilder im Textfluss einbetten
 
-\usetikzlibrary{arrows,matrix,positioning}
-\usetikzlibrary{calc,decorations.markings}
-\usetikzlibrary{angles,quotes}
-\newcommand{\cross}[1]{
-\draw ($(#1) + (-.1,-.1)$) -- ($(#1) + (.1,.1)$);
-\draw ($(#1) + (.1,-.1)$) -- ($(#1) + (-.1,.1)$);
-}
+\usepackage[T1]{fontenc}       %Zeichenbelegung der verwendeten Schrift / Umlaute 
+\usepackage{ae}                %macht schöneres ß
+\usepackage{typearea}	         %ermöglicht änderung des Seitenspiegels
+\usepackage{scrpage2}          %ermöglicht änderung der Kopf-/Fußzeile
+\usepackage{lastpage}          %lässt auf die Seienanzahl zugreifen
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption} %macht die Bildbeschriftungen richtig
+\renewcommand{\figurename}{Abb.}
 
-\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+\pagestyle{scrheadings}        %sagt Koma-Skript, dass selbstdefiniers Kopfzeilen verwendet werden
+%\typearea{16}                  %stellt Seitenspiegel ein
+\columnsep25pt								 %definiert Breite zwischen den zwei Spalten von \twocolumns
 
-\pagestyle{scrheadings}
-\ohead{Pascal Gepperth}
-\ifoot{\today}
+\renewcommand{\pnumfont}       %ändert die Schriftart der Seitennummerierung
+\normalfont\rmfamily\slshape   %ändert die Schriftart der Seitennummerierung 
+
+
+%selbst eingefügt
 
 \begin{document}
-
-\section*{Sitzung 1}
-\subsection*{Uni-Teil}
-\subsubsection*{Erweiterung des ersten Strahlensatzes}
-\begin{equation*}
-\begin{aligned}
-&& \frac{a}{c} &= \frac{a +b}{c + b}\\
-\Leftrightarrow && \frac{c+d}{c} &= \frac{a+b}{a}\\
-\Leftrightarrow && \frac{d}{c} &= \frac{b}{a}\\
-\Leftrightarrow && \frac{a}{b} &= \frac{c}{d}
-\end{aligned}
-\end{equation*}
-\subsubsection*{Zweiter Strahlensatz}
-Es gilt der erste Strahlensatz.\\
-\textbf{Skizze:}
+\begin{titlepage}
 \begin{center}
-	\begin{tikzpicture}[scale = 2, thick]
-		\coordinate (A) at (2,2);
-		\coordinate (B) at (0,0);
-		\coordinate (C) at (2,0);
-		\coordinate (D) at (3,1);
-		\coordinate (E) at (3,0);
-		\coordinate (F) at (3,3);
-		
-		\draw (A)node[above]{$A$} -- (B)node[below]{$B$} -- (C)node[below]{$C$} -- (A) -- (F)node[above]{$F$} -- (E)node[below]{$E$} -- (C) -- (D)node[right]{$D$};
-	\end{tikzpicture}
+\includegraphics[scale=0.25]{Unilogo} \\
+\vspace{2cm}
+\Large Mathematisch-Naturwissenschaftliche Fakultät \\
+\vspace{1cm}
+\Large Bachelorarbeit \\
+\vspace{1cm}
+\huge \textbf{Hauptsatz der Differential- und Integralrechnung an Hochschule und Schule} \\
+\vspace{3cm}
+\large
+\begin{tabular}{ll}
+Name: & {Samuel Jung} \\
+Matrikelnummer: & {4040639} \\
+Studienabschluss: & {Bachelor of Education} \\
+Studienfächer: & {Mathematik \& Physik} \\
+Gutachter: & {Prof. Dr. Frank Loose} \\
+Datum & {\today}
+\end{tabular}
 \end{center}
-Es gilt mit dem ersten, erweiterten Strahlensatz und Zentrum $ B $
-\begin{equation}
-\begin{aligned}
-\frac{BC}{CE} = \frac{BA}{AF} \label{eq:ZentrB}
-\end{aligned}
-\end{equation}
-sowie für Zentrum $ E $
-\begin{equation*}
-\begin{aligned}
-\frac{ED}{DF} = \frac{EC}{CB}
-\end{aligned}
-\end{equation*}
-und somit natürlich auch
-\begin{equation}
-\begin{aligned}
-\frac{DF}{ED} = \frac{BC}{CE} \label{eq:ZentrE}
-\end{aligned}
-\end{equation}
-Aus (\ref{eq:ZentrB}) und (\ref{eq:ZentrE}) folgt dann
-\begin{equation*}
-\begin{aligned}
-&&\frac{BA}{AF} &= \frac{DF}{ED}\\
-\Leftrightarrow && \frac{BA}{DF} &= \frac{AF}{ED}
-\end{aligned}
-\end{equation*}
-Da $ AF \parallel CD $ und $ AC \parallel DF $ ist $ ACDF $ ein Parallelogramm. Damit gilt $ AC = DF $ und folglich
-\begin{equation*}
-\begin{aligned}
-&& \frac{BA}{DF} &= \frac{AF}{DE}\\
-\Leftrightarrow && \frac{DE}{DF} &= \frac{AF}{BA}\\
-\Leftrightarrow && \frac{DE}{DF} &= \frac{AF}{BA}\\
-\Leftrightarrow && \frac{DE + DF}{DF} &= \frac{AF + BA}{BA}\\
-\Leftrightarrow && \frac{BA}{DF} &= \frac{AF +BA}{DE + DF}\\
-\Leftrightarrow && \frac{BA}{AC}&= \frac{BF}{EF}
-\end{aligned}
-\end{equation*}
-\subsubsection*{Widerlegung der Umkehrung}
-Betrachte die Punkte $ A(0,0), B(2,2), C(1,0), D(3,0) $.\\
-\textbf{Skizze:}
-\begin{center}
-	\begin{tikzpicture}[scale = 2, thick]
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (2,2);
-		\coordinate (C) at (1,0);
-		\coordinate (D) at (3,0);
-		
-		\draw (B)node[above]{$B$} -- (A)node[left]{$A$} -- (C)node[below]{$C$} -- (D)node[below]{$D$};
-		\draw[dashed] (D) -- (B) -- (C);
-	\end{tikzpicture}
-\end{center}
-Offenbar gilt
-\begin{equation*}
-\begin{aligned}
-\frac{AB}{BC} &= \frac{AB}{BC},
-\end{aligned}
-\end{equation*}
-doch die Geraden $ B\lor C $ und $ B \lor D $ sind verschieden, da $ C \neq D $, es gilt aber
-\begin{equation*}
-\begin{aligned}
-B \in B\lor C \cap B\lor D \neq \emptyset.
-\end{aligned}
-\end{equation*}
-Folglich sind die Geraden nicht parallel.
+\end{titlepage}
+\tableofcontents	
 \newpage
-\section*{Sitzung 2}
-\subsection*{Schul-Teil}
-\subsubsection*{Eigenschaften der Zentrischen Streckung (Elemente 5)}
-Beispiele an Konstruktionen mit maßstäblicher Vergrößerung.
-\paragraph{Definition}
-Eine \textbf{zentrische Streckung} wird festgelegt durch das \textbf{Streckzentrum \textit{Z}} und den \textit{positiven} \textbf{Streckfaktor \textit{k}}.\\
-Zu einem Punkt erhältst du den Bildpunkt wie folgt:
-\begin{enumerate}[(1)]
-	\item Wenn der Punkt $ P $ nicht mit dem Zentrum zusammenfällt, dann erhält man den Bildpunkt $ P' $ wie folgt:
-	\begin{enumerate}[(a)]
-		\item Zeichne die Halbgerade $ \ray{ZP} $.
-		\item Zeichne den Punkt $ P' $ auf der Halbgeraden $ \ray{ZP} $ so, dass gilt
-		\begin{align*}
-		\left|ZP'\right| = k \cdot \left|ZP\right|
-		\end{align*}
-	\end{enumerate}
-	\item Der Bildpunkt $ Z' $ von $ Z $ fällt mit $ Z $ zusammen: $ Z' = Z $.
-\end{enumerate}
-\paragraph{Zentrische Streckung mit negativem Streckfaktor}
-Eingeführt als zentrische Streckung um $ \left|k\right| $ und anschließender Punktspiegelung in $ Z $.
-\paragraph{Diskussion}
-S.18, Afg 12
-\paragraph{Eigenschaften}
-Betrachtung verschiedener Abbildungen (vgl S.19) \marginpar{Abb. ungenau, nur intuitive Vermutungen}
-\begin{enumerate}[(1)]
-	\item Drehung + Verkleinerung
-	\item Stauchung von Winkel
-	\item Zentrische Streckung Dreieck
-	\item Verschiedene Streckungsfaktoren
-\end{enumerate}
-mit Hinblick auf zentrische Streckungen. Beurteilung:
-\begin{enumerate}[(1)]
- \item nicht, da $ AB $ nicht parallel zu $ A'B' $.
- \item nicht, da Winkel nicht erhalten.
- \item ja.
- \item nicht, da unterschiedliche Streckfaktoren.
- \end{enumerate}
-\paragraph{Satz}
-Für jede \textit{zentrische Streckung} mit einem positiven Streckfaktor $ k $ gilt:
-\begin{enumerate}[(a)]
-	\item Gerade und Bildgerade sind parallel.
-	\item Bildstrecke ist k-mal so lang wie Originalstrecke.
-	\item Winkel und Bildwinkel sind gleich groß.
-\end{enumerate}
-\paragraph{Beweis des Satzes}
-\begin{enumerate}[(a)]
-	\item Wird nicht bewiesen.
-	\item Betrachtung zweier Fälle
-	\begin{enumerate}[1.]
-		\item Fall: Die Strecke $ AB $ liegt auf einer Geraden durch das Streckzentrum. \marginpar{$ Z \in A\lor B $}\\
-		Dann gilt
-		\begin{equation*}
-		\begin{aligned}
-		\left|ZA'\right| = k \cdot \left|ZA\right| \qquad \text{und} \qquad \left|ZB'\right| = k\cdot \left|ZB\right|.
-		\end{aligned}
-		\end{equation*}
-		Ohne Einschränkung ist
-		\begin{equation*}
-		\begin{aligned}
-		\left|ZA\right| < \left|ZB\right|.
-		\end{aligned}
-		\end{equation*}
-		Dann gilt \textit{(\enquote{Aus der Zeichnung entnehmen wir:})}
-		\begin{center}
-			\begin{tikzpicture}
-			\coordinate (Z) at (0,0);
-			\coordinate (A) at (1.5,0);
-			\coordinate (B) at (2.5,0);
-			\coordinate (A') at (3,0);
-			\coordinate (B') at (5,0);
-			
-			\draw (Z) node[anchor=north]{$Z$} -- (A) node[below]{$A$} -- (B) node[below]{$B$} -- (A') node[below]{$A'$} -- (B') node[below]{$B'$};
-			\cross{Z};
-			\cross{A};
-			\cross{B};
-			\cross{A'};
-			\cross{B'};
-			\end{tikzpicture}
-		\end{center}
-		\begin{equation*}
-		\begin{aligned}
-		\left|AB\right| = \left|ZB\right| - \left|ZA\right| \qquad \text{und} \qquad \left|A'B'\right| = \left|ZB'\right| - \left|ZA'\right|.
-		\end{aligned}
-		\end{equation*}
-		Infolge dessen gilt
-		\begin{equation*}
-		\begin{aligned}
-		\left|A'B'\right| &= \left|ZB'\right| - \left|ZA'\right|\\
-		&= k \cdot\left|ZB\right| - k \cdot \left|ZA\right|\\
-		&=k \cdot \left(\left|ZB\right| - \left|ZA\right|\right)\\
-		&= k \left|AB\right|
-		\end{aligned}
-		\end{equation*}
-		\item Fall: Die Strecke $ AB $ liegt nicht auf einer Geraden durch das Streckzentrum. \marginpar{$ Z \notin A\lor B $}\\
-		\begin{center}
-			\begin{tikzpicture}[thick,yscale = 1.8]
-				\coordinate (Z) at (0,0);
-				\coordinate (A) at (2,1);
-				\coordinate (A') at ($1.5*(A)$);
-				\coordinate (B) at (3,0);
-				\coordinate (B') at ($1.5*(B)$);
-				\coordinate (C) at ($(A)-(B)$);
-				\coordinate (C') at ($(A')-(B')$);
-				
-				\draw (Z) node[anchor=north]{$ Z $} -- (A) node[anchor=south east]{$ A $} --(A') node[anchor=south east]{$ A' $} -- ($(A') + (A)$);
-				\draw (Z) -- (B) node[anchor=north]{$ B $} -- (B') node[anchor=north]{$ B' $} -- ($(B') + (B)$);
-				\draw (Z) -- (C) node[anchor=north east]{$ C $} -- (C') node[anchor=north east]{$ C' $} -- ($(C') + (C)$);
-				\draw (C) -- (A) -- (B);
-				\draw (C') -- (A') -- (B');
-				
-				\node at ($(C') + 0.5*(C)$) [anchor= south west]{$ g $};
-			\end{tikzpicture}
-		\end{center}
-	Betrachte Parallele $ g $ zu $ AB $ durch $ Z $. Dann ist $ g $ nach (a) auch parallel zu $ A'B' $, da
-	\begin{equation*}
-	\begin{aligned}
-	AB \parallel A'B'.
-	\end{aligned}
-	\end{equation*}
-	Strecken $ AB $ und $ A'B' $ werden auf $ g $ abgetragen (Schnitt von $ g $ und Parallele von $ ZB $ durch $ A $ bzw. $A'$).
-	Damit sind $ ZBAC $ und $ ZB'A'C' $ Parallelogramme und es gilt
-	\begin{equation*}
-	\begin{aligned}
-	\left|ZC\right| &= \left|AB\right|\\
-	\left|ZC'\right| &= \left|A'B'\right|.
-	\end{aligned}
-	\end{equation*}
-	Nun ist $ C' $ auch Bildpunkt von $ C $, da nach (a) $ C'A' $ die Bildgerade von $ CA $ ist. Damit gilt
-	\begin{equation*}
-	\begin{aligned}
-	\left|A'B'\right| &= \left|ZC'\right|\\
-	&= k \left|ZC\right|\\
-	&= k \left|AB\right|
-	\end{aligned}
-	\end{equation*}
-	\end{enumerate}
-	\item Sei $ \alpha' $ der Bildwinkel von $ \alpha $ nach zentrischer Streckung in Zentrum $ Z $.
-	\begin{center}
-		\begin{tikzpicture}[thick]
-			\coordinate (Z) at (0,0);
-			\coordinate (A) at (1,.2);
-			\coordinate (A') at ($3*(A)$);
-			\coordinate (B) at ($(A) + (1,-3)$);
-			\coordinate (B') at ($(B) - (A) + (A')$);
-			\coordinate (C) at ($(A) + (3,-3)$);
-			\coordinate (C') at ($(C) - (A) + (A')$);
-			\coordinate (A'') at ($1.5*(A')$);
-			
-			\draw (Z) node[left]{$Z$} -- (A'');
-			\cross{Z};
-			\draw (A) node[above]{$A$} -- (C);
-			\draw (A) -- (B);
-			
-			\draw (A') node[above]{$A'$} -- (C');
-			\draw (A') -- (B');
-			
-			\pic [draw, angle radius = 1cm] {angle = B--A--C};
-			\pic [draw, angle radius = 0.7cm] {angle = C--A--A'};
-			\pic [draw, angle radius = 1.3cm] {angle = B--A--A'};
-			\pic [draw, angle radius = 1cm] {angle = B'--A'--C'};
-			\pic [draw, angle radius = 0.7cm] {angle = C'--A'--A''};
-			\pic [draw, angle radius = 1.3cm] {angle = B'--A'--A''};
-			
-			\node at ($(A) + (.4,-.15)$) {$\beta$};
-			\node at ($(A') + (.45,-.15)$) {$\beta'$};
-			
-			\node at ($(A) + (.4,-.65)$) {$\alpha$};
-			\node at ($(A') + (.4,-.65)$) {$\alpha'$};
-			
-			\node at ($(A) + (0.9,-.40)$) {$\gamma$};
-			\node at ($(A') + (0.9,-.35)$) {$\gamma'$};
-		\end{tikzpicture}
-	\end{center}
-	Nach (a) sind die Schenkel an $ A $ bzw. $ A' $ paarweise zueinander parallel.\\
-	Mit dem Stufenwinkelsatz gilt dann
-	\begin{equation*}
-	\begin{aligned}
-	\beta &= \beta'\\
-	\gamma &= \gamma'
-	\end{aligned}
-	\end{equation*}
-	sowie
-	\begin{equation*}
-	\begin{aligned}
-	\alpha &= \gamma - \beta\\
-	\alpha' &= \gamma' - \beta'
-	\end{aligned}
-	\end{equation*}
-	und folglich
-	\begin{equation*}
-	\begin{aligned}
-	\alpha' &= \gamma' - \beta'\\
-	&= \gamma - \beta\\
-	&= \alpha
-	\end{aligned}
-	\end{equation*}
-\end{enumerate}
+\section{Einleitung}
+Die Differntial- und Integralrechnung, ist heute ein absolut wesentlicher Bestandteil der Mathematik. Die Kenntnisse darüber sind grundlegend zum Verständnis von höherer Mathematik und werden daher auch von jedem Abiturienten \footnote{Aufgrund der Lesbarkeit wird im Folgenden immer nur die männliche Form verwendet. Gemeint sind aber immer beide Geschlechter} gefordert. Auch an der Hochschule wird Differential- und Integralrechnung bereits in den Grundvorlesungen der Mathematik aufgearbeitet und vertieft. Häufig unterscheiden sich die Herangehensweisen an das Thema von Schule und Hochschule sehr. Rückblickend merken viele Studierende, das man in der Schule die Differential- und Integralrechnung nur sehr oberflächlich behandelt, und ein grundlegendes Verständnis erst an der Hochschule erfolgt. In dieser Arbeit soll der Hauptsatz der Differential- und Integralrechnung fachlich aufgearbeitet werden und in einem Vergleich die Lehre an der Schule zu diesem Thema untersucht werden. Es soll ein Fazit gezogen werden, wo eventuelle Lücke in der Schule sind und wo auch sinnvoll eine didaktische Reduktion durchgenommen wurde. 
+\section{Hauptsatz der Differential- und Integralrechnung an der Hochschule}
+\subsection{Differentialrechnung an der Hochschule}
+Um den Hauptsatz der Differential- und Integralrechnung zu verstehen benötigt man einige Sätze und Definitionen aus der Differential und Integralrechnung. Diese sollen zuerst betrachtet werden. 
+\subsubsection{Differenzierbarkeit}
+Sei $(a,b) \subseteq \mathbb{R}$ ein Intervall und $f: (a,b) \rightarrow \mathbb{R}$ eine Funktion. $f$ heißt in einem Punkt $y \in (a,b)$ differenzierbar falls der Grenzwert
+\begin{align*}
+f'(x) = \underset {\underset{y \in (a,b)\backslash \{x\}}{y \rightarrow x}}{lim}\frac{f(y) - f(x)}{y-x}
+\end{align*}
+existiert. Dieser Grenzwert wird Differentialquotient oder Ableitung genannt. Häufig schreibt man auch
+\begin{align*}
+f'(x) = \underset{h \rightarrow 0}{lim} \frac{f(x+h) - f(x)}{h}
+\end{align*}
+Geometrisch betrachtet beschreibt die Ableitung $f'(x)$ die Steigung der Funktion $f$ im Punkt $x$. 
+\subsubsection{Lokale Extrema}
+Sei $f: (a,b) \rightarrow \mathbb{R}$ eine Funktion. $f$ hat im Punkt $x \in (a,b)$ ein lokales Maximum wenn gilt:
+\begin{align*}
+\exists \hspace{0.1 cm}\varepsilon > 0 \hspace{0.2cm} \forall y \in (x-\varepsilon,x+\varepsilon): f(x) \geq f(y)
+\end{align*}
+Analog definiert man ein lokales Minimum. \\
+Gilt $f(x) \geq f(y)$ für alle $y \in (a,b)$ sagt man $f$ habe in $x$ ein globales Maximum. Analog definiert man ein globales Minimum. \\
+Für ein lokales Extremum an der Stelle $x \in (a,b)$ gilt: $f'(x)=0$. \\
+\textbf{Beweis:}\\
+Da $f$ in $x \in (a,b)$ ein lokales Maximum besitzt gilt:
+\begin{align*}
+\exists \hspace{0.1cm} \varepsilon > 0 \hspace{0.2cm} \forall \hspace{0.1cm} \xi \in (x-\varepsilon,x+\varepsilon): f(\xi) \leq f(x)
+\end{align*}
+Für $\xi \geq x$ gilt
+\begin{align*}
+\frac{f(\xi) - f(x)}{\xi - x} \leq 0
+\end{align*}
+Für $\xi \leq x$ gilt
+\begin{align*}
+\frac{f(\xi) - f(x)}{\xi - x} \geq 0
+\end{align*}
+Daraus folgt:
+\begin{align*}
+f'(x) = \underset{\xi \rightarrow x}{lim}\frac{f(\xi) - f(x)}{\xi - x} = 0
+\end{align*}
 \begin{flushright}
-	$ \Box $
+$\Box$
 \end{flushright}
-\subsubsection*{Vergleich der Schulbücher}
-\paragraph{BUCHTITEL 1}
-\begin{itemize}
-	\item Beginn mit \enquote{maßstäblicher Vergrößerung}.
-	\begin{itemize}
-		\item Streckenverhältnis von Original- zu Bildstrecke bleibt gleich
-		\begin{equation*}
-		\begin{aligned}
-		k = \frac{a'}{a} = \frac{b'}{b}
-		\end{aligned}
-		\end{equation*}
-		\item (Bild-)Winkel sind gleich weit.
-	\end{itemize}
-	\item zentrische Streckung als \enquote{Abbildung} mit Streckzentrum $ Z $ und Streckfaktor $ k $, sodass jedem Punkt $ P $, der nicht das Zentrum ist, ein Punkt $ P' $ zugeordnet wird und
-	\begin{itemize}
-		\item $ P' $ liegt auf dem Strahl $ \ray{ZP} $
-		\item \begin{equation*}
-		\begin{aligned}
-		\overline{ZP'} = k \cdot \overline{ZP}
-		\end{aligned}
-		\end{equation*}
-	\end{itemize}
-	\item Vorerst $ k > 0 $
-	\item \enquote{Satz von der zentrischen Streckung}, sodass Geraden auf parallele Geraden abgebildet werden
-	\item Mit dem Satz begründen sich Winkeltreue und Teilverhältnistreue
-	\item Bsp. zum konstruieren einer zentr. Streck.
-	\item Bsp. Streckzentrum bestimmen
-	\item Üb. Entscheiden ob zentr. Streck.
-\end{itemize}
-\paragraph{Lambacher Schweizer}
-\begin{itemize}
-	\item Zentrische Streckung als reine Konstruktionsanleitung. \marginpar{Mache dies, dann das}
-	\item Bsp. Konstruktion
-	\item Bsp. Zentrum finden
-\end{itemize}
-\paragraph{Delta}
-\begin{itemize}
-	\item Einführung über Vergrößerung und Verkleinerung
-	\begin{itemize}
-		\item intuitiv und anschaulich
-		\item Anschauliche Beispiele (praktisch durchführbar)
-		\item Wertetabelle
-		\begin{center}
-			\includegraphics[width=0.7\linewidth]{ZS_Bsp}
-		\end{center}
-	\end{itemize}
-	\item Definition via Konstruktion (nur Bilder)
-	\item Eigenschaften
-	\begin{itemize}
-		\item $ P' \in Z \lor P $
-		\item $ \overline{ZA'} = k \cdot \overline{ZA} $
-		\item $ \alpha = \alpha' $
-		\item $ BC \parallel B'C' $
-	\end{itemize}
-	\item negatives $ k $ extra behandelt (Bsp Lochkamera)
-	\item Übungsaufgabe: Erkenne ob ZS
-	\item Übungsaufgabe: Nicht erkennbar, was Ausgangs- und Bildfigur (interpretativ)
-\end{itemize}
-\newpage
-\section*{Sitzung 3}
-\subsection*{Schul-Teil}
-\subsubsection*{Exkurs: Ähnlichkeitssätze am Kreis}
-\paragraph{Definitionen} Im folgenden bezeichne $ M $ den Mittelpunkt eines Kreisbogens mit Endpunkten $ A $ und $ B $. Ferner sei $ P $ ein beliebiger Punkt auf dem Kreisbogen.
+\subsubsection{Satz von Rolle}
+Sei $f:[a,b] \rightarrow \mathbb{R}$ eine Funktion. $f$ sei stetig und in $(a,b)$ differenzierbar. Es sei außerdem $f(a)=f(b)$. Dann existiert ein $\xi \in (a,b)$ mit $f'(\xi)=0$. \vspace{1em}\\
+\textbf{Beweis:} \\
+1.Fall: $f$ sei konstant. Dann gilt $\forall x \in [a,b]: f'(x)=0$. \\
+2.Fall: $f$ ist nicht konstant. Daraus folgt: $\exists x_0 \in (a,b): f(x_0) < f(a) \hspace{0.2cm} \lor \hspace{0.2cm} f(x_0) > f(a)$. In einem Punkt $\xi \in (a,b)$ nimmt f ein Maximum oder Minimum an. Für dieses Maximum oder Minimum gilt $f'(\xi)=0$. \\
+\begin{flushright}
+$\Box$
+\end{flushright}
+\subsubsection{Mittelwertsatz der Differentialrechnung}
+Sei $f: [a,b] \rightarrow \mathbb{R}$ eine differenzierbare Funktion. Dann existiert ein $\xi \in (a,b)$ mit 
+\begin{align*}
+f'(\xi) = \frac{f(b) - f(a)}{b-a}
+\end{align*}
+\textbf{Beweis:} \\
+Man definiere sich die Hilfsfunktion $g: [a,b] \rightarrow \mathbb{R}$
+\begin{align*}
+g(x) =f(x) - \frac{f(b) - f(a)}{b-a} (x-a)
+\end{align*}
+Es gilt $g(a) = g(b) = f(a)$. Nach dem Satz von Rolle existiert ein $\xi \in (a,b)$ mit $g'(\xi) = 0$. Nun leite man $g$ ab und setzte $\xi$ ein. Dann folgt die Behauptung
+\begin{align*}
+&& g'(x) = f'(x) - \frac{f(b) - f(a)}{b-a} \\
+\Rightarrow && 0 = g'(\xi) = f'(\xi) - \frac{f(b) - f(a)}{b-a} \\
+\Leftrightarrow && f'(\xi) = \frac{f(b) - f(a)}{b-a}
+\end{align*}
+\begin{flushright}
+$\Box$
+\end{flushright}
+\subsection{Integralrechnung an der Hochschule}
+\subsubsection{Treppenfunktion}
+Eine Treppenfunktion ist eine Funktion $\phi: [a,b] \rightarrow \mathbb{R}$, für die es eine Zerlegung $\{a=t_0,t_1,...,t_{n-1},t_n=b\}$ gibt, sodass $\phi$ auf jedem Intervall $(t_{i-1},t_i) (i=1,...,n)$ konstant ist. 
+\subsubsection{Integral}
+Das Integral einer Treppenfunktion wird folgendermaßen definiert:
+\begin{align*}
+\int_a^b \phi(x) dx = \sum_{i=1}^{n} c_i
+\end{align*}
+Hierbei sei $c_i$ der Funktionswert, der auf dem Intervall $(c_{i-1},c_i)$ angenommen wird. 
+\subsubsection{Ober- und Unterintegral}
+Sei $f: [a,b] \rightarrow \mathbb{R}$ eine beschränkte Funktion und $\mathcal{T}$ die Menge aller Treppenfunktionen auf $[a,b]$. Dann definiert man das Oberintegral folgendermaßen:
+\begin{align*}
+{\int_a^b}^* f(x)dx := inf\{\int_a^b \varphi(x): \varphi(x) \in \mathcal{T}, \varphi \geq f\}
+\end{align*} 
+Das Unterintegral definiert man als
+\begin{align*}
+{\int_a^b}_* f(x)dx := sup\{\int_a^b \varphi(x): \varphi(x) \in \mathcal{T}, \varphi \leq f\}
+\end{align*} 
+\subsubsection{Riemannintegral}
+Eine Funktion $f: [a,b] \rightarrow \mathbb{R}$ heißt Riemann-integrierbar, wenn gilt: 
+\begin{align*}
+{\int_a^b}^* f(x)dx  = {\int_a^b}_* f(x)dx 
+\end{align*}
+\subsubsection{Monotonie des Integrals}
+Seien $f,g: [a,b] \rightarrow \mathbb{R}$ zwei Riemann-integrierbare Funktionen. Es gilt:
+\begin{align*}
+f \leq g \Rightarrow \int_a^b f(x) dx \leq \int_a^b g(x) dx 
+\end{align*}
+\textbf{Beweis:} \\
+Man betrachte das Unterintegral von $f$ und das Oberintegral von $g$. Dann ist die Aussage trivial. 
+\subsubsection{Mittelwertsatz der Integralrechung}
+Seien $f,\phi: [a,b] \rightarrow \mathbb{R}$ stetige Funktionen und $\phi \geq 0$. Dann existiert ein $\xi \in [a,b]$ so dass, 
+\begin{align*}
+\int_a^b f(x) \phi (x) dx = f(\xi) \int_a^b \phi (x)
+\end{align*}
+Für den Fall $\phi = 1$ gilt:
+\begin{align*}
+\exists \xi \in [a,b]: \int_a^b f(x) dx = f(\xi)(b-a)
+\end{align*}
+\textbf{Beweis:}\\
+Sei $m$ das Minimum von $f$ und $M$ das Maximum von $f$. Es gilt damit:
+\begin{align*}
+&& m \leq f \leq M \\
+\Rightarrow && m\phi \leq f\phi \leq M\phi \\
+\Rightarrow && m \int_a^b \phi (x) dx \leq \int_a^b f(x) \phi (x) dx \leq M \int_a^b \phi (x) dx \\
+\Rightarrow && m \leq \frac{\int_a^b f(x) \phi (x) dx}{\int_a^b \phi (x) dx} \leq M
+\end{align*}
+Nach dem Zwischenwertsatz existiert ein $\xi \in [a,b]$ mit $f(\xi)=\frac{\int_a^b f(x) \phi (x) dx}{\int_a^b \phi (x) dx}$
+\begin{flushright}
+$\Box$
+\end{flushright}
+\subsection{Hauptsatz der Differential- und Integralrechnung}
+Der Hauptsatz der Differential- und Integralrechnung besagt letztendlich, dass Integrieren und Differenzieren zwei entgegengesetzte Operationen sind. Dies ist eine sehr faszinierende Entdeckung, da man das Integral nur über die Treppenfunktionen und die Fläche unterhalb des Graphen definiert hat. Auf den ersten Blick würde man so gar nicht darauf kommen. Der Hauptsatz der Differential- und Integralrechnung besteht aus zwei Teilen. Als erstes werden Stammfunktionen betrachtet, die sich aus dem Integral ergeben und abgeleitet auf die Ursprungsfunktion zurückführen. Als zweites schaut man sich an, wie man mit Hilfe einer Stammfunktion das Integral einer Funktion auch berechnen kann. 
+\subsubsection{Vorzeichenkonvention}
+Sei $f: [a,b] \rightarrow \mathbb{R}$ Riemann-integrierbar. Dann setzt man:
+\begin{align*}
+\int_b^a f(x) dx = - \int_a^b f(x) dx 
+\end{align*}
+\subsubsection{Aufteilung des Integrals}
+Sei $I$ ein Intervall und $f: I \rightarrow \mathbb{R}$ eine Riemann-integrierbare Funktion. Dann gilt für alle $a,b,c \in I$:
+\begin{align*}
+\int_a^b f(x)dx + \int_b^c f(x)dx = \int_a^c f(x)dx
+\end{align*}
+Der Beweis ergibt sich aus der Approximation von $f$ durch Treppenfunktionen. 
+\subsubsection{Stammfunktion}
+Sei $I$ ein Intervall. Sei $f: I \rightarrow \mathbb{R}$ eine Funktion. Sei $F: I \rightarrow\mathbb{R}$ eine differenzierbare Funktion. $F$ wird Stammfunktion von $f$ genannt, wenn auf dem gesamten Intervall $I$ gilt: $F' = f$. \\
+Sei $G: I \rightarrow \mathbb{R}$ eine weitere Funktion. Dann ist $G$ eine Stammfunktion von $f$ wenn $F-G$ eine Konstante ist. \\
+\textbf{Beweis:} \\
+$(F-G)' = F' - G' = f-f = 0$. Daraus folgt $F-G$ ist konstant. 
+\subsubsection{Hauptsatz}
+Sei $I$ ein Intervall. Sei $f: I \rightarrow \mathbb{R}$ eine stetige Funktion und $a \in I$. Dann ist 
+\begin{align*}
+F(x) = \int_a^x f(t) dt
+\end{align*}
+eine Stammfunktion zu $f$. \vspace{1em} \\
+Sei außerdem $G$ eine Stammfunktion von $f$, dann gilt für $a,b \in I$
+\begin{align*}
+\int_a^b f(x) dx = G(b) - G(a)
+\end{align*}
+\textbf{Beweis:} \\
+Man betrachte den Differentenquotienten
+\begin{align*}
+\frac{F(x+h) - F(x)}{h}
+\end{align*}
+Es sei $h \neq 0$ so, dass $(x+h) \in I$. \\
+Formt man diesen Differentenquotient etwas um, erhält man nach dem Mittelwertsatz
+\begin{align*}
+\frac{F(x+h) - F(x)}{h} = \frac{1}{h} \left( \int_a^{x+h} f(t) dt - \int_a^x f(t) dt \right) = \frac{1}{h} \int_x^{x+h} f(t) dt = \frac{1}{h} f(\xi)h = f(\xi)
+\end{align*}
+Dieses $\xi$ liegt im Intervall $[x,x+h]$. Lässt man nun $h$ gegen $0$ gehen, erhält man 
+\begin{align*}
+\underset{h \rightarrow 0}{lim} \hspace{0.1 cm}\xi = x
+\end{align*}
+Daraus folgt
+\begin{align*}
+\underset{h \rightarrow 0}{lim} \frac{F(x+h) - F(x)}{h} = \underset{h \rightarrow 0}{lim} f(\xi) = f(\underset{h \rightarrow 0}{lim} \hspace{0.1 cm} \xi) = f(x)
+\end{align*}
+Seien $a,b,c \in I$. Dann gilt: 
+\begin{align*}
+\int_a^b f(x) dx = \int_c^b f(x) dx - \int_c^a f(x) dx = F(b) - F(a)
+\end{align*}
+Für eine beliebige andere Stammfunktion $G$ existiert ein $r \in \mathbb{R}$, sodass $G = F+c$. Damit gilt
+\begin{align*}
+F(b) - F(a) = G(b) - G(a)
+\end{align*}
+\begin{flushright}
+$\Box$
+\end{flushright}
+\section{Der Hauptsatz an der Schule}
+An der Schule kann der Hauptsatz natürlich nicht in dieser Ausführlichkeit beleuchtet werden. Daher werden an der Schule an vielen Stellen didaktische Reduktionen durchgeführt, um den Schülern auf einfachere Weise den Hauptsatz klarzumachen. Im Folgenden soll beleuchtet werden, wie der Hauptsatz an der Schule erklärt wird, wo fachdidaktische Reduktionen sinnvoller Weise nötig sind und wo die Schule Lücken, beim Verständnis des Hauptsatzes hinterlässt.
+\subsection{Bildungsplan}
+Der Bildungsplan 2016 für allgemeinbildende Gymnasien schreibt folgende Bildungsziele in der Integralrechnung vor: 
+\vspace{1em} \\
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Bildungsplan1}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Bildungsplan2}
+\end{figure} 
+\vspace{1em}\\
+Der Bildungsplan schreibt relativ genau vor, was die Schüler bei der Integralrechnung verstehen sollten und welche Berechnungen sie können sollten. Vergleicht man den Stoff der Schule mit der Hochschule, wird man entdecken, dass teilweise sehr stark fachdidaktische Reduktionen durchgeführt worden sind. Dies ist in vielen Fällen jedoch sehr sinnvoll. Zum einen, würde vielen Schülern das tiefere Verständnis des Hauptsatzes, wie er an der Hochschule gelehrt wird, fehlen. Zum anderen sollte man immer das Ziel im Auge behalten. Die Ziele des Bildungsplanes kann man auch gut, eher besser, mit fachdidaktischen Reduktionen erreichen. In den folgenden Abschnitten wird untersucht, wie der Hauptsatz an die Schüler herangeführt wird und wo die entsprechenden Reduktionen durchgeführt worden sind. Da jeder Lehrer individuellen Gestaltungsspielraum hat, wie er den Schülern, die Integralrechnung beibringt, habe ich mich bei der Recherche hauptsächlich mit den Schulbüchern befasst, da diese für die Lehrer einen gewissen Leitfaden bei der Unterrichtsgestaltung bieten. 
+\subsection{Rekonstruktion}
+Das klassische Schema, aus Definitionen, Sätzen und Beweisen, wie wir es an der Hochschule kennen, wird in der Schule nicht angewandt. In der Schule wird sehr vieles anhand von Beispielen erklärt. Häufig fängt man hierbei mit Rekonstruktion an. Das Ziel soll einfach sein, den Schülern eine erste Einführung zu geben, dass man aus Änderungsraten auf eine tatsächliche Größe schließen kann. 
+\subsubsection{Beispiel und Erklärung}
+Ein gutes Beispiel zur Einführung und Verdeutlichung wäre folgendes: \\
+Ein Wassertank steht zu Beginn leer und wird die ersten 4 Minuten mit einem Zufluss von $3 \frac{l}{min}$ befüllt. Nach 4 Minuten bricht jedoch ein Stück des Tankes ab. Die Reperatur dauert 2 Minuten. Währenddessen fließt das Wasser mit einer Geschwindigkeit von $1 \frac{l}{min}$ aus dem Tank wieder raus.
+\vspace*{1em} \\
+\begin{figure} [h!]
+\centering
+\includegraphics[scale=0.5]{Wassertank2}
+\end{figure}
+\vspace{1em} \\
+Man betrachte nun, das Intervall $[0,4]$. Es fließen pro Minute $3 l$ in den Tank rein. Die Füllmenge des zugeflossenen Wassers $V_1$ in diesen 4 Minuten beträgt also $V_1 = 3 \frac{l}{min} \cdot 4 min = 12 l$. Im Intervall $[4,6]$ haben wir eine Abflussgeschwindigkeit von $-1 \frac{l}{min}$. In dieser Zeit haben wir eine Füllmenge von $V_2 = -1 \frac{l}{min} \cdot 2 min = -2 l$. Die gesamte Füllmenge $V$ nach 6 Minuten beträgt also $V = V_1 + V_2  = 10 l$. \\
+Der Graph gibt ja nur die Durchschnittsgeschwindigkeit an. Jetzt stellt sich Frage, ob man auch aus dem Graphen die tatsächliche Füllmenge ablesen kann. Die Füllmenge berechnet man durch Zeit mal Durchflussgeschwindigkeit. Betrachtet man nun jeweils die zwei Teilintervalle. Die Fläche zwischen Graph und x-Achse ist eine Rechtecksfläche. Welche sich durch Breite mal Höhe berechnet. Die Breite (x-Achse) gibt jedoch genau die Zeit an, wie lang das Wasser fließt. Die Höhe gibt genau die Fließgeschwindigkeit an. Da die Höhe das Produkt aus Fließgeschwindigkeit und Zeit ist, ergibt die Fläche zwischen Graph und x-Achse somit die Füllmenge. Hierbei sind Flächen unterhalb der x-Achse negativ zu sehen. Somit kann man aus dem Graph einer Änderungsrate die tatsächliche Größe rekonstruieren. 
+\subsection{Integral}
+Auch beim Integral wird es häufig durch ein Beispiel erklärt. Folgende Erklärung kann Schülern das Integral gut verdeutlichen:
+\subsubsection{Beispiel und Erklärung}
+Man betrachte die Funktion $f(x) = x^2$ auf dem Intervall $[0,1]$. Da wir keine Formel haben, um die Fläche unterhalb des Graphen zu berechnen, müssen wir es annähern. Wir teilen das Intervall in 5 gleich große Teilintervalle auf. Die Fläche wird folgendermaßen angenähert:
+\vspace{1em } \\
+\begin{figure} [h!]
+\centering
+\includegraphics[scale=0.48]{Treppe}
+\end{figure}
+\vspace{1 em} \\
+Jedes Teilintervall hat eine Breite von $0,2$. Die angenäherte Fläche $A$ wäre somit
+\begin{align*}
+A &= 0,2 \cdot 0^2 + 0,2 \cdot 0,2^2 + 0,2 \cdot 0,4^2 + 0,2 \cdot 0,6^2 + 0,2 \cdot 0,8^2 \\
+&= 0,2 \cdot (0^2 + 0,2^2 + 0,4^2 + 0,6^2 + 0,8^2) = 0,24
+\end{align*}
+Man sieht jedoch schon am Bild, dass diese Näherung relativ ungenau ist. Nimmt man jedoch mehr Intervalle, wird es genauer. Man bezeichne mit $n$ die Anzahl an Teilintervallen und $A_n$ dem entsprechenden angenäherten Flächeninhalt. Dann gilt:
+\begin{align*}
+A_n &= \left( \frac{1}{n} \right) \cdot 0^2 + \left( \frac{1}{n} \right) \cdot  \left( \frac{1}{n} \right)^2 +  \left( \frac{1}{n} \right) \cdot  \left( \frac{2}{n} \right)^2 + ... +  \left( \frac{1}{n} \right)  \cdot  \left( \frac{n-1}{n} \right)^2 \\
+&=  \left( \frac{1}{n^3} \right) \cdot (0^2 + 1^2 + 2^2 + ... + (n-1)^2)
+\end{align*}
+Die Summe aller Quadratzahlen ergibt 
+\begin{align*}
+1^2 + 2^2 + ... + (n-1)^2 = \frac{1}{6} \cdot (n-1) \cdot n \cdot (2n-1)
+\end{align*}
+Daraus folgt:
+\begin{align*}
+A_n &=  \left( \frac{1}{n} \right)^3 \cdot  \left( \frac{1}{6} \right) \cdot (n-1) \cdot n \cdot (2n-1) \\
+&= \frac{1}{6} \cdot \frac{n-1}{n} \cdot \frac{n}{n} \cdot \frac{2n-1}{n} \\
+&= \frac{1}{6} \cdot \left( 1 - \frac{1}{n} \right) \cdot 1 \cdot \left( 2 - \frac{1}{n} \right) 
+\end{align*}
+Betrachten wir nun $A_n$ im Grenzwert $n \rightarrow \infty$. Dann erhält man:
+\begin{align*}
+\underset {n \rightarrow \infty}{lim} A_n = \frac{1}{3}
+\end{align*}
+Diesen Grenzwert nennt man das Integral von $f(x) = x^2$ im Intervall $[0,1]$. Allgemein schreibt man
+\begin{align*}
+\int_a^b f(x) dx
+\end{align*}
+Hierbei sind $a,b$ die untere bzw. obere Integralgrenze und $dx$ die Intergrationsvariable.
+\subsection{Der Hauptsatz der Differential- und Integralrechnung}
+Um den Hauptsatz zu verstehen, helfen den Schülern die Abschnitte über Rekonstruktion und dem Integral. Aus der Rekonstruktion von Größen haben die Schüler gelernt, dass man aus Änderungsraten die Größe durch die Fläche unter dem Graphen rekonstruieren kann. Als nächstes lernen die Schüler, dass man die Fläche unter einem Graphen annähern und berechnen kann. Beides benutzt man jetzt um den Schülern den Hauptsatz näher zu bringen. Dabei wird er meistens nicht wirklich bewiesen, sondern eher das Prinzip dahinter erklärt. Eine Erklärung könnte wie folgt lauten: 
+\subsubsection{Beispiel und Erklärung}
+$f$ sei eine Funktion, die eine momentane Änderungsrate angibt. $F$ sei eine Funktion, die die entsprechende momentane Größe angibt. (Als klassisches Beispiel, können hier Weg und Geschwindigkeit gewählt werden, da die Schüler dies aus Physik bereits können und sich etwas darunter vorstellen können.) Will man die Gesamtänderung einer Größe auf dem Intervall $[a,b]$ bestimmen, so erhält man diese aus $F(b) - F(a)$. Wenn $f$ eine Änderungsrate von $F$ angibt, muss ja zwangsläufig gelten: $F' = f$. $F$ heißt Stammfunktion von $f$. Da man die Fläche unter dem Graphen durch das Integral berechnet gilt:
+\begin{align*}
+\int_a^b f(x) dx = F(b) - F(a)
+\end{align*} 
+\subsection{Bestimmung einer Stammfunktion}
+Die Schüler haben gelernt, dass für eine Stammfunktion $F$ einer Funktion $f$ gilt: $F' = f$. Aus den Ableitungsregeln, welche die Schüler auch schon kennen, kann man nun umgekehrt Regeln, zur Bestimmung einer Stammfunktion aufstellen. Im Bildungsplan (Seite 8) ist festgelegt, von welchen Funktionstypen die Schüler Stammfunktionen bestimmen können sollten. Die meisten Regeln zur Bestimmung einer Stammfunktion sollte den Schülern an einigen Beispielen schnell klar werden, da sie die Ableitungsregeln bereits kennen. Die folgende Tabelle gibt einen Überblick, aller nötigen Ableitungsregeln, welche man den Schülern anhand der Ableitungsregeln einfach erklären kann. Was kann den Schülern jedoch klar machen muss ist, dass es nicht nur eine Stammfunktion gibt. Addiert man zu einer Stammfunktion noch eine Konstante $k \in \mathbb{R}$ dazu, wäre es immer noch eine Stammfunktion, derselben Ursprungsfunktion. Häufig wird eine möglichst einfache Stammfunktion genommen und es wird keine Konstante dazu angehängt. Für die Rekonstruktion einer Funktion aus Anfangsbestand und Änderungsraten ist dies jedoch wichtig zu wissen. Die nachfolgende Tabelle zeigt die wichtigen Rechenregeln zur Bildung einer Stammfunktion für die Schüler. Man kann diese mit Hilfe der Ableitungsregeln einfach erklären, indem man einfach die Stammfunktion ableitet.  
+\vspace{1em} \\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$f(x)$ & $x^r \hspace{0.3 cm} (r \neq -1)$ & $c \cdot g(x) \hspace{0.3 cm} (c \in \mathbb{R})$ & $g(x) + h(x)$ & $g(h(x)) \hspace{0.3 cm} (h(x) = ax + b)$\\
+\hline
+$F(x)$ & $\frac{1}{r+1}x^{r+1}$ & $c \cdot G(x)$ & $G(x) + H(x)$ & $\frac{1}{a} \cdot g'(h(x))$ \\
+\hline
+\end{tabular}
+\vspace{1 em} \\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$f(x)$ & $sin(x)$ & $cos(x)$ & $e^x$ & $\frac{1}{x}$\\
+\hline
+$F(x)$ & $-cos(x)$ & $sin(x)$ & $e^x$ & $ln(x)$ \\
+\hline
+\end{tabular}
+\vspace{1 em} \\
+Die einzige Regel, die den Schülern nicht klar sein dürfte ist die Stammfunktion von $\frac{1}{x}$. Man könnte die Schüler dies einfach hinnehmen lassen. Der genau Beweis über den Differentenquotienten wird in der Schule eigentlich nicht erbracht. 
+\subsection{Integralfunktionen}
+Bisher wurden nur Integrale behandelt, die feste Integralgrenzen besitzen. Nun betrachtet man auch Integrale einer Funktion $f(t)$ mit einer festen unteren Grenze und einer variablen oberen Grenze. Diese nennt man Integralfunktion
+\begin{align*}
+J_a(x) = \int_a^x f(t) dt
+\end{align*}
+Die Funktion $J_a(x)$ ist eine Stammfunktion, denn es gilt $J_a(b) = \int_a^b f(t) dt = F(b) - F(a)$. 
+\section{Didaktische Reduktion und Vergleich}
+Wie man sieht gehen Schule und Hochschule sehr anders an den Hauptsatz der Differential- und Integralrechnung ran. Im Folgenden wird der Aufbau und die Struktur etwas beleuchtet, wie Hochschule und Schule an die Integralrechnung herangehen und wo bei den einzelnen Themen fachdidaktische Reduktionen vorgenommen werden. 
+\subsection{Aufbau und Schemata}
+Hochschule und Schule haben in gewisser Sicht eine relativ ähnliche Struktur, nach der sie vorgehen um Integrale zu erklären. Schaut man sich die Struktur an, nach der thematisch vorgegangen wird, kann man sowohl in Schule und Hochschule grob zusammengefasst folgenden thematischen Aufbau finden:
 \begin{description}
-	\item[Peripheriewinkel] Der Winkel $ \angle APB $ wird als Peripheriewinkel der Kreissehne $ AB $ bezeichnet. Zu einer Kreissehne existieren also beliebig viele Peripheriewinkel (da $ P $ beliebig).
-	\item[Zentriwinkel] Der Winkel $ \angle AMB $ ist der zugehörige Zentriwinkel. Dieser kann auch \textit{überstumpf} ($ > 180^\circ $) sein. Im folgenden sei er folgendermaßen gewählt: Ist der Peripheriewinkel spitz, so ist der Zentriwinkel kleiner 180$ ^\circ $. Ist der Peripheriewinkel stumpf, so ist der Zentriwinkel überstumpf.
+\item [Rechtecksumme] \hfill \\
+Meistens fängt man mit einer Einführung über sogenannte Treppenfunktionen bzw. Rechtecksummen an. Die Fläche unter dem Graphen lässt sich sehr einfach berechnen, indem man einfach die Flächeninhalte der einzelnen Rechtecke addiert. 
+\item [Integral] \hfill \\
+Das Integral in einem Intervall $[a,b]$ wird als Fläche zwischen dem Graphen und der x-Achse im angegeben Intervall definiert. Um das Integral unter einem krummlinigen Graphen zu bestimmen, teilt man $[a,b]$ in Teilintervalle auf und nähert das Integral durch eine Rechtecksumme an. Je kleiner die einzelnen Teilintervalle sind, desto genauer wird es. Lässt man die Anzahl an Teilintervallen gegen $\infty$ gehen erhält man im Grenzwert das Integral. 
+\item [Hauptsatz] \hfill \\
+Um das Integral einer Funktion $f$ zuberechnen, bildet man eine Stammfunktion $F$. Für die Stammfunktion gilt $F' = f$. Das Integral im Intervall $[a,b]$ erhält man dann durch
+\begin{align*}
+\int_a^b f(x) dx = F(b) - F(a)
+\end{align*}
 \end{description}
-\paragraph{Zentri-Peripheriewinkelsatz} Der Zentriwinkel ist doppelt so groß wie der Peripheriewinkel. ($ \alpha = 2 \beta $)\\
-\begin{minipage}{.6\textwidth}
-\textbf{Beweis:} Das Dreieck $ \triangle APM $ ist gleichschenklig. Es gilt
-\begin{equation*}
-\begin{aligned}
-\angle APM = \angle PAM := \epsilon
-\end{aligned}
-\end{equation*}
-Damit ist
-\begin{equation*}
-\begin{aligned}
-\gamma = 180^\circ - 2 \epsilon
-\end{aligned}
-\end{equation*}
-Analog gilt
-\begin{equation*}
-\begin{aligned}
-\angle BPM = \angle PBM := \xi
-\end{aligned}
-\end{equation*}
-Damit ist
-\begin{equation*}
-\begin{aligned}
-\delta = 180^\circ - 2 \xi
-\end{aligned}
-\end{equation*}
-\end{minipage}
-\begin{minipage}{.4\textwidth}
-	\includegraphics[width=\linewidth]{peripherie_und_zentriwinkel}
-\end{minipage}
-Damit gilt dann
-\begin{equation*}
-\begin{aligned}
-\alpha &= 360^\circ - \gamma - \delta\\
-&= 2\epsilon + 2 \xi\\
-&= 2 \beta
-\end{aligned}
-\end{equation*}
-da $ \beta = \epsilon + \xi $.\\
-\\
-Für den zweiten Fall betrachte man stumpfe Peripheriewinkel.
-\begin{center}
-	\begin{tikzpicture}[scale = 3]
-		\coordinate (M) at (0,0);
-		\coordinate (A) at (${1/sqrt(13)}*(-3,-2)$);
-		\coordinate (B) at (${1/sqrt(13)}*(3,-2)$);
-		\coordinate (P) at (0,-1);
-		
-		\draw (M) circle [radius = 1];
-		\draw (A) node[left]{$A$} -- (M) node[below]{$M$} -- (B) node[right] {$B$} -- (P) node [below]{$P$} -- (A) -- (B);
-		\draw pic[draw, angle radius=.5cm] {angle=B--M--A}; % alpha'
-		\draw pic[draw, angle radius=.5cm] {angle=A--M--B}; % alpha
-		\draw pic[draw, angle radius=.5cm] {angle=B--A--M}; % gamma1
-		\draw pic[draw, angle radius=.5cm] {angle=P--A--B}; % delta
-		\draw pic[draw, angle radius=.5cm] {angle=B--P--A}; % beta
-		\draw pic[draw, angle radius=.5cm] {angle=A--B--P}; % epsilon
-		\draw pic[draw, angle radius=.5cm] {angle=M--B--A}; % gamma 2
-		
-		\draw (0,.1) -- ($(0,.1) + (.1,.1)$) node[right]{$\alpha$};
-		\draw (.05,-.1) -- ($(.05,-.1) + (.2,0)$) node[right]{$\alpha'$};
-		\draw ($ (A) + (.1,.05)$) -- ($(A) + (.2,.1)$) node[right]{$\gamma$};
-		\draw ($ (A) + (.1,-.04)$) -- ($(A) + (.2,-.06)$) node[right]{$\delta$};
-		\node at ($(P) + (0,.09)$) {$\beta$};
-		\draw ($ (B) + (-.1,-.04)$) -- ($(B) + (-.2,-.06)$) node[left]{$\epsilon$};
-		\draw ($ (B) + (-.1,.05)$) -- ($(B) + (-.2,.1)$) node[left]{$\gamma$};
-	\end{tikzpicture}
-\end{center}
-Damit gilt
-\begin{equation*}
-\begin{aligned}
-\alpha' = 360^\circ - \alpha
-\end{aligned}
-\end{equation*}
-sowie
-\begin{equation*}
-\begin{aligned}
-&& 180^\circ &= 2\gamma + \alpha'\\
-\Leftrightarrow && 180^\circ &= 2 \gamma + 360^\circ - \alpha\\
-\Leftrightarrow && \alpha &= 2 \gamma + 180^\circ
-\end{aligned}
-\end{equation*}
-und
-\begin{equation*}
-\begin{aligned}
-2 \gamma + \delta + \epsilon &= \beta
-\end{aligned}
-\end{equation*}
-Damit gilt dann
-\begin{equation*}
-\begin{aligned}
-\alpha &= 180^\circ + 2 \gamma\\
-&= \beta + 180^\circ - \delta - \epsilon\\
-&= 2 \beta
-\end{aligned}
-\end{equation*}
-\begin{flushright}
-	$ \Box $
-\end{flushright}
-\paragraph{Folgerung} Da die Kreissehne $ AB $ den Zentriwinkel bereits eindeutig definiert, der Punkt $ P $ aber beliebig ist, sind alle Peripheriewinkel auf der gleichen Seite von $ AB $ gleich groß.
-\paragraph{Sehnensatz} Sei $ S $ ein Punkt innerhalb eines Kreises. Für alle Sehnen durch $ S $ ist das Produkt der jeweiligen Sehnenabschnitte konstant.
-\begin{center}
-	\begin{tikzpicture}
-		\coordinate (M) at (0,0);
-		\coordinate (S) at (1,-1);
-		\coordinate (A') at ($(S) + (-2,-3)$); %-1,-4 
-		\coordinate (B') at ($(S) + (2,-4)$); % 3,-5
-		\coordinate (C') at ($(S) + (2,3)$); % 3,2
-		\coordinate (D') at ($(S) + (-2,4)$); % -1,3
-		\coordinate (A) at ($3/sqrt(1^2+4^2)*(A')$);
-		\coordinate (B) at ($3/sqrt(3^2+5^2)*(B')$);
-		\coordinate (C) at ($3/sqrt(3^2+2^2)*(C')$);
-		\coordinate (D) at ($3/sqrt(1^2+3^2)*(D')$);
-
-	
-		\draw (M) circle [radius = 3];
-		\node at (.8,-.7) [anchor=south]{$S$};
-		\draw (A) node[anchor=north east]{$A$}  -- (C) node[anchor=west]{$C$};
-		\draw (B) node[anchor=north west]{$B$} -- (D) node[anchor=south east]{$D$};
-	\end{tikzpicture}
-\end{center}
-\begin{proof}
-	Man betrachte die Peripheriewinkel über der Sehne $ AD $ in den Punkten $ B $ und $ C $. Dann gilt
-	\begin{equation*}
-	\begin{aligned}
-	\angle ABD = \angle ACD
-	\end{aligned}
-	\end{equation*}
-	Ferner sind die Scheitelwinkel gleich groß, also
-	\begin{equation*}
-	\begin{aligned}
-	\angle ASB = \angle CSD
-	\end{aligned}
-	\end{equation*}
-	Infolgedessen sind $ \triangle ABS $ und $ \triangle CDS $ ähnlich. Damit gilt
-	\begin{equation*}
-	\begin{aligned}
-	&& \frac{AS}{BS} &= \frac{SD}{SC}\\
-	\Leftrightarrow && AS \cdot SC &= BS \cdot SD
-	\end{aligned}
-	\end{equation*}
-\end{proof}
-\paragraph{Höhenabschnittsatz}
-\begin{center}
-	\begin{tikzpicture}
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (4,-1);
-		\coordinate (C) at (3,4);
-		\coordinate (M) at ($1/2*(B)$);
-		\coordinate (HA) at ($1/26*(95,19)$);
-		\coordinate (HB) at ($8/25*(3,4)$);
-		
-		\draw (M) circle [radius = sqrt(4.25)];
-		\draw (A) node[left]{$A$} -- (B) node[right]{$B$} -- (C) node[above]{$C$} -- (A);
-		\draw (A) -- (HA) node[right]{$h_A$};
-		\draw (B) -- (HB) node[anchor = south east]{$h_B$};
-	\end{tikzpicture}
-\end{center}
-\begin{proof}
-	Der Kreisbogen über AB ist ein Thaleskreis und erklärt die rechten Winkel. Mit dem Sehnensatz folgt die Behauptung.
-\end{proof}
-\paragraph{Sekantensatz} Sei $ S $ ein Punkt außerhalb des Kreises. Das Produkt jeweiliger Sekantenabschnitte von Sekanten durch $ S $ ist konstant.
-\begin{center}
-	\begin{tikzpicture}[scale = 3]
-		\coordinate (M) at (0,0);
-		\coordinate (A) at ($1/sqrt(5)*(-1,-2)$);
-		\coordinate (B) at ($1/sqrt(3^2+2^2)*(3,-2)$);
-		\coordinate (AB) at ($(B)-(A)$);
-		\coordinate (D) at ($1/sqrt(5)*(-1,2)$);
-		\coordinate (C) at ($1/sqrt(3^2+2^2)*(3,2)$);
-		\coordinate (DC) at ($(C)-(D)$);
-%		\coordinate (S) at ();
-		\draw (M) circle [radius = 1];
-		\draw (A) node [anchor=north east]{$A$} -- ($(A) + 2.63*(AB)$) node [right] {$S$};
-		\draw (D) node [anchor=south]{$D$} -- ($(D) + 2.63*(DC)$);
-		\draw (A) -- (C) node[anchor= south west]{$C$};
-		\draw (D) -- (B) node[anchor= north west]{$B$};
-	\end{tikzpicture}
-\end{center}
-\begin{proof}
-	Eine Sekante schneide den Kreis in $ A $ und $ B $, eine weitere in den Punkten $ C $ und $ D $. Dann sind $ \triangle SAC $ und $ \triangle SBD $ ähnlich. Damit gilt dann
-	\begin{equation*}
-	\begin{aligned}
-	&& \frac{SC}{SB} &= \frac{SA}{SD}\\
-	\Leftrightarrow && SC \cdot SD &= SA \cdot SB
-	\end{aligned}
-	\end{equation*}
-\end{proof}
-\paragraph{Wie wird das in der Schule gemacht?} In der Schule sind die Sätze nicht im Pflichtprogramm oder werden gar formal bewiesen.
-\end{document}
-
+Diese drei Punkte samt Inhalt werden an Hochschule und Schule beide behandelt. Die Art und Weise, wie etwas erklärt wird ist jedoch sehr unterschiedlich. Auch werden einzelne kleine Themen manchmal in der Schule ausgelassen. Betrachtet man den thematischen Aufbau, in der Schule, dann erkennt man einen großen Unterschied, nämlich die Einführung, durch das Kapitel zum Thema Rekonstruktion. Die einzelnen Themen werden im Folgenden untersucht und verglichen, wo die Schule entsprechend didaktische Reduktionen vornimmt. 
+\subsection{Rekonstruktion}
+Das Kapitel über die Rekonstruktion halte ich durchaus für sinnvoll. Gerade zur Einführung in die Integralrechnung. Es vermittelt den Schülern den Sinn und Zweck, der hinter der Integralrechnung steckt, nämlich gerade Größen aus Änderungsraten zu rekonstruieren. Bei einer konstanten Änderungsrate sollte jeder Schüler dazu in der Lage sein, die tatsächliche Größe rekonstruieren zu können. Allein in Physik lernt man ja bereits in der 7.Klasse, dass der Weg das Produkt aus Geschwindigkeit und Zeit ist. Nun kann man eine gute Überleitung machen auf komplizierte Probleme, wie krummlinige Graphen, also wenn die Änderungsrate sich durchgehend ändert. Die Schüler bekommen ein wenig einen Einblick, wofür Integralrechnung gut ist. \\
+Interessant ist, wenn man jedoch etwas genauer hinsieht. 
+In der Hochschule wird sofort eine Treppenfunktion definiert und das entsprechende Integral als Fläche unter dem Graphen dazu. In der Schule wird auch mit einer Treppenfunktion gestartet. Jedoch wird der Begriff Treppenfunktion meistens nie verwendet. Das Einführungsbeispiel, sind jedoch häufig Treppenfunktionen. Die Flächenberechnung einer Treppenfunktion können die Schüler bereits durchführen, da Flächenberechnungen eines Rechtecks bereits in der Unterstufe durchgenommen werden. Ich halte diese Reduktion für sehr sinnvoll, da die Berechnungen mit Treppenfunktionen keine Anwendung mehr finden, sobald man weiß, wie an eine Stammfunktion bildet. Dies ist für viele Schüler schon schwer genug, daher muss man sie nicht unnötig noch mit Treppenfunktionen belasten. Interessant ist, dass bei diesem Kapitel häufig der Hauptsatz schon etwas vorgegriffen wird. Wie so oft, werden viele Dinge an einem Beispiel erklärt. Es wird schnell die Parallele gezogen, dass die Fläche genau der gesuchten Größe entspricht. Dies lässt sich bei Rechtecksflächen einfach zeigen. Interessant ist jedoch, was dann häufig passiert. Aufgrund eines Beispiels, in dem es passt, wird nun allgemein postuliert, dass die Fläche unterhalb des Graphen einer Änderungsrate, immer der gesuchten Größe entspricht. Es wird nicht bewiesen, sondern einfach behauptet. Die Rekonstruktion erleichtert auch viele Erklärungen vom Integral und dem Hauptsatz, wie weiter unten zu sehen ist. 
+\subsection{Integral}
+In diesem Kapitel finden wir zwischen Hochschule und Schule schon mehr Gemeinsamkeiten. Das Prinzip, wie man ein Integral berechnet, wird an der Schule, genauso wie an der Hochschule erklärt. Nämlich als Annäherung durch eine Treppenfunktion, bei der man die Feinheit der Zerlegung gegen 0 gehen lässt. Auch hier sieht man jedoch wieder den großen Unterschied an der Weise, wie es erklärt wird. In der Schule wird wieder nur eine Beispielfunktion genommen, an der das Prinzip erklärt wird. Dies halte ich aber für absolut ausreichend in der Schule. In den nächsten Kapiteln, kommt der Hauptsatz und Stammfunktionen dran, mit denen die Schüler dann Integrale berechnen können. In der Hochschule werden die sogenannten Riemann-Summen deutlich genauer betrachtet. Die Studenten müssen häufig Integrale mit Riemann-Summen im Grenzwert berechnen. Für Schüler dürfte dies aber sehr kompliziert sein, da sie auch noch nicht viel Erfahrung mit Grenzwerten haben. Wenn die Schüler grob das Prinzip dahinter verstehen reicht das. \\
+Wo du Schule stark didaktische Reduktionen vornimmt, ist jedoch bei der Frage nach der Integrierbarkeit von Funktionen. Es wird in keinster Weise die Frage überhaupt aufgeworfen, ob es Funktionen gibt, die nicht integrierbar sind. Es wird stillschweigend vorausgesetzt. Auch das Riemann-Integral wird nicht genauer definiert. Die Näherung durch Treppenfunktion, wird zwar erklärt. In einigen Schulbüchern wird sogar, das Prinzip erklärt, dass man es von oben und von unten annähern kann. Der Begriff Ober- oder Untersumme taucht jedoch auch eigentlich nicht auf. Auch die Definition des Riemann-Integrals, dass Ober- und Untersumme gleich sein müssen, findet man in Schulbüchern nicht. Diese Reduktionen, finde ich jedoch auch sehr sinnvoll. Alle Funktionen, die man in der Schule betrachtet, sind stetige Funktionen. Und stetige Funktionen sind alle Riemann-integrierbar. Der Beweis dafür, wäre meiner Ansicht nach viel zu kompliziert für die Schüler. 
+\end{document}	
